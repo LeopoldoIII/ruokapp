@@ -1,8 +1,52 @@
 <resources>
+
+    <!-- App -->
     <string name="app_name">Ruokapp</string>
+
+    <!-- Login and SingUp -->
     <string name="title_email">Email</string>
     <string name="hint_email">example@email.com</string>
     <string name="hint_password">Password</string>
     <string name="login">Login</string>
-    <string name="register">Not account yet? Create one</string>
+    <string name="sign_up">Not account yet? Create one</string>
+    <string name="confirm_pass">Repeat Password</string>
+    <string name="title_register">Register</string>
+    <string name="title_singup">SingUp</string>
+    <string name="already_member">Already a member? Login</string>
+
+    <!-- Home -->
+    <string name="explorer">Descubre</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Discover -->
+    <string name="title_discover">Discover</string>
+
+    <!-- Fav -->
+    <string name="title_favorites">Matches</string>
+    
+    <!-- Food -->
+    <string name="title_food">Food</string>
+    <string name="food_name">Sopa de Calabaza</string>
+    <string name="title_ingredients">Ingredientes</string>
+    <string name="ingredients">- Ingrediente uno\n\n - Ingrediente two \n\n - Un ingrediente con mas texto</string>
+    <string name="title_preparation">Preparacion</string>
+    <string name="preparation_steps">- 1. Primer paso de preparacion \n\n - 2. Segundo paso de preparacion que puede ser largo\n\n - 3. Tercer paso de preparacion</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>
