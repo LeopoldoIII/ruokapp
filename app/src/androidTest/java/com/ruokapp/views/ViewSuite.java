@@ -8,7 +8,8 @@ import org.junit.runners.Suite;
         WelcomeActivityTest.class,
         LoginActivityTest.class,
         RegisterActivityTest.class,
-        HomeActivityTest.class})
+        HomeActivityTest.class,
+        DiscoverActivityTest.class})
 
 public class ViewSuite {
 }
