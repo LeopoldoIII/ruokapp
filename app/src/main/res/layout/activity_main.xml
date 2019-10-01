@@ -8,7 +8,7 @@
     tools:context=".views.LoginActivity">
 
     <ImageView
-        android:id="@+id/logoruokapp"
+        android:id="@+id/logo_ruokapp"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="8dp"
@@ -42,7 +42,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoruokapp"
+        app:layout_constraintTop_toBottomOf="@+id/logo_ruokapp"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="@string/title_email"
@@ -131,7 +131,7 @@
         android:layout_marginBottom="8dp"
         android:autoLink="all"
         android:clickable="true"
-        android:text="@string/already_member"
+        android:text="@string/sign_up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
