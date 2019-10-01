@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".views.DiscoverActivity">
+
+    <item
+        android:id="@+id/action_fav"
+        app:showAsAction="always"
+        android:title="Fav"
+        android:icon="@drawable/favs"
+        />
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="Settings"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/action_about_us"
+        android:title="@string/title_about_us"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/action_logout"
+        android:title="Logout"
+        app:showAsAction="never"
+        />
+
+</menu>

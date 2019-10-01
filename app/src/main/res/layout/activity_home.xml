@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.HomeActivity"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    >
+
+
+    <RelativeLayout
+        android:id="@+id/layout_background_explorer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5">
+
+        <Button
+            android:id="@+id/buttonExplorer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginEnd="323dp"
+            android:layout_marginRight="323dp"
+            android:background="@color/colorPrimary"
+            android:layout_centerInParent="true"
+            android:text="@string/explorer"
+            android:onClick="goToDiscover"/>
+
+        <ImageView
+            android:id="@+id/discover_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/discover_home"
+            android:onClick="goToDiscover"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_background_fav"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_background_explorer"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_weight="0.5">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/background_fav"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleX="2"
+            android:scaleY="2"
+            app:srcCompat="@drawable/favs_home"
+            android:onClick="goToFav"
+            />
+
+            <ImageView
+                android:id="@+id/icon_fav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/background_fav"
+                app:layout_constraintEnd_toEndOf="@+id/background_fav"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/background_fav"
+                app:layout_constraintTop_toTopOf="@+id/background_fav"
+                app:layout_constraintVertical_bias="0.085"
+                app:srcCompat="@drawable/favs"
+                android:onClick="goToFav"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
