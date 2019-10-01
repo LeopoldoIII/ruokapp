@@ -55,7 +55,7 @@ public class Adapter extends BaseAdapter {
         titleFood.setText(data.get(position).getName());
         timerText.setText(data.get(position).getTime());
         foodImage.setImageResource(R.drawable.referencia);
-        iconDiffult.setImageResource(R.drawable.dificult);
+        iconDiffult.setImageResource(R.drawable.difficult);
         iconTimer.setImageResource(R.drawable.timer);
 
         return view;
