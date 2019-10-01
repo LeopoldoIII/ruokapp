@@ -6,7 +6,9 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         WelcomeActivityTest.class,
-        LoginActivityTest.class})
+        LoginActivityTest.class,
+        RegisterActivityTest.class,
+        HomeActivityTest.class})
 
 public class ViewSuite {
 }
