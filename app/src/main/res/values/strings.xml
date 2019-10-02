@@ -33,7 +33,7 @@
     <string name="title_ingredients">Ingredientes</string>
     <string name="ingredients">- Ingrediente uno\n\n - Ingrediente two \n\n - Un ingrediente con mas texto</string>
     <string name="title_preparation">Preparacion</string>
-    <string name="preparation_steps">- 1. Primer paso de preparacion \n\n - 2. Segundo paso de preparacion que puede ser largo\n\n - 3. Tercer paso de preparacion</string>
+    <string name="preparation_steps">- 1. Primer paso de preparacion \n\n- 2. Segundo paso de preparacion que puede ser largo\n\n- 3. Tercer paso de preparacion\n\n- 4. El cuerto paso de preparacion es mas largo para ver como funciona el scroll</string>
 
     <!-- Settings -->
     <string name="title_user">Username</string>
