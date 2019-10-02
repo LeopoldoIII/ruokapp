@@ -60,6 +60,10 @@ public class FavActivity extends AppCompatActivity {
                 intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
                 break;
+            case  R.id.action_about_us:
+                intent = new Intent(this, AboutUsActivity.class);
+                startActivity(intent);
+                break;
             default:
                 finish();
                 break;
