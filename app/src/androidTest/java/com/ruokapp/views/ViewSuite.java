@@ -12,7 +12,8 @@ import org.junit.runners.Suite;
         DiscoverActivityTest.class,
         FavActivityTest.class,
         AboutUsActivityTest.class,
-        FoodActivityTest.class})
+        FoodActivityTest.class,
+        SettingActivityTest.class})
 
 public class ViewSuite {
 }

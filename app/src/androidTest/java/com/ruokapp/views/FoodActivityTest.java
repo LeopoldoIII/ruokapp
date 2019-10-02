@@ -19,7 +19,7 @@ public class FoodActivityTest {
     public ActivityTestRule<FoodActivity> mActivityTestRule = new ActivityTestRule<>(FoodActivity.class);
 
     @Test
-    public void verifyAboutUsActivity(){
+    public void verifyFoodActivity(){
         Espresso.onView(withId(R.id.main_image_food)).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.main_title_food)).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.icon_difficult)).check(ViewAssertions.matches(isDisplayed()));

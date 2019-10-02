@@ -36,7 +36,7 @@
                     android:background="@color/colorPrimaryDark">
 
                     <ImageView
-                        android:id="@+id/imageView"
+                        android:id="@+id/image_user"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_marginStart="8dp"
@@ -44,7 +44,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
-                        app:layout_constraintBottom_toTopOf="@id/textView"
+                        app:layout_constraintBottom_toTopOf="@id/username"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -52,7 +52,7 @@
                         card_view:srcCompat="@drawable/profile" />
 
                     <TextView
-                        android:id="@+id/textView"
+                        android:id="@+id/username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -63,15 +63,15 @@
                         android:layout_marginBottom="8dp"
                         android:text="@string/title_user"
                         android:textColor="@color/colorAccentSecundary"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/textView2"
+                        app:layout_constraintBottom_toTopOf="@+id/email_user"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                        app:layout_constraintTop_toBottomOf="@+id/image_user" />
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/email_user"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -81,11 +81,11 @@
                         android:layout_marginBottom="24dp"
                         android:text="@string/hint_email"
                         android:textColor="@color/colorAccentSecundary"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView" />
+                        app:layout_constraintTop_toBottomOf="@+id/username" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -93,7 +93,7 @@
 
             <!-- Diets -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView2"
+                android:id="@+id/card_diets"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -121,9 +121,9 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_marginBottom="8dp"
-                        android:text="Diet"
+                        android:text="@string/title_diets"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="28dp"
+                        android:textSize="28sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -142,8 +142,8 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_marginBottom="8dp"
-                        android:text="Vegetarian"
-                        android:textSize="18dp"
+                        android:text="@string/title_vegetarian"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -179,8 +179,8 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_marginBottom="8dp"
-                        android:text="Vegan"
-                        android:textSize="18dp"
+                        android:text="@string/title_vegan"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -216,8 +216,8 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_marginBottom="8dp"
-                        android:text="Gluten Free"
-                        android:textSize="18dp"
+                        android:text="@string/title_gluten_free"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -248,7 +248,7 @@
 
             <!-- Cuisines -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView3"
+                android:id="@+id/card_cuisines"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -259,7 +259,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView2"
+                app:layout_constraintTop_toBottomOf="@+id/card_diets"
                 app:layout_constraintVertical_bias="0.0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -276,9 +276,9 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_marginBottom="8dp"
-                        android:text="Cuisines"
+                        android:text="@string/title_cuisines"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="28dp"
+                        android:textSize="28sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -297,8 +297,8 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_marginBottom="8dp"
-                        android:text="Chinese"
-                        android:textSize="18dp"
+                        android:text="@string/title_chinese"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -334,8 +334,8 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_marginBottom="8dp"
-                        android:text="Italian"
-                        android:textSize="18dp"
+                        android:text="@string/title_italian"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -371,8 +371,8 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_marginBottom="8dp"
-                        android:text="Japanese"
-                        android:textSize="18dp"
+                        android:text="@string/title_japanese"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"

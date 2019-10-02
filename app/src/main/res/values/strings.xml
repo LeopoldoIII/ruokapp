@@ -37,6 +37,14 @@
 
     <!-- Settings -->
     <string name="title_user">Username</string>
+    <string name="title_diets">Diets</string>
+    <string name="title_vegetarian">Vegetarian</string>
+    <string name="title_vegan">Vegan</string>
+    <string name="title_gluten_free">Gluten Free</string>
+    <string name="title_cuisines">Cuisines</string>
+    <string name="title_chinese">Chinese</string>
+    <string name="title_italian">Italian</string>
+    <string name="title_japanese">Japanese</string>
 
     <!-- About Us -->
     <string name="title_about_us">About Us</string>
