@@ -7,7 +7,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         WelcomeActivityTest.class,
         LoginActivityTest.class,
-        RegisterActivityTest.class,
+        SingUpActivityTest.class,
         HomeActivityTest.class,
         DiscoverActivityTest.class,
         FavActivityTest.class,
