@@ -23,8 +23,6 @@ public class SettingActivityTest {
 
     @Test
     public void verifySettingsActivity(){
-        Espresso.onView(withId(R.id.username)).check(ViewAssertions.matches(isDisplayed()));
-        Espresso.onView(withId(R.id.email_user)).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.card_diets)).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.title_diet)).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.title_vegan)).check(ViewAssertions.matches(isDisplayed()));
