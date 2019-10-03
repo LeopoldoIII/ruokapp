@@ -1,7 +1,5 @@
 pipeline {
-  agent { 
-    label 'Ruokapp'
-  }
+  agent none
   stages{
       stage("Gradle Clean"){
           steps{
