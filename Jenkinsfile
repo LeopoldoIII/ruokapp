@@ -1,6 +1,6 @@
 pipeline {
   agent { 
-    node { label 'Ruokapp' }                     (*)
+    node { label 'Ruokapp' }
   }
   stages{
       stage("Gradle Clean"){
