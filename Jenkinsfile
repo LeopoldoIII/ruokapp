@@ -1,9 +1,9 @@
 pipeline {
-  agent none
+  agent any
   stages{
       stage("Start Emulator"){
         steps{
-          call ./jenkins/scripts/startEmulator.bat
+          bat './jenkins/scripts/startEmulator.bat'
         }
       }
   }
