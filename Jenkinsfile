@@ -3,7 +3,7 @@ pipeline {
   stages{
       stage("Start Emulator"){
         steps{
-          bat ./jenkins/scripts/startEmulator.bat
+          call ./jenkins/scripts/startEmulator.bat
         }
       }
   }
