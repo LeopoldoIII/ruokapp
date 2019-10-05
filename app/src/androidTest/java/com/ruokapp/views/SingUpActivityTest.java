@@ -16,13 +16,13 @@ import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
-public class RegisterActivityTest {
+public class SingUpActivityTest {
 
     @Rule
     public ActivityTestRule<SignUpActivity> mActivityTestRule = new ActivityTestRule<>(SignUpActivity.class);
 
     @Test
-    public void verifyRegisterActivity(){
+    public void verifySingUpActivity(){
         Espresso.onView(withId(R.id.logo_ruokapp)).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.title_app)).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.title_user)).check(ViewAssertions.matches(isDisplayed()));
