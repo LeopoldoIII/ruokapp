@@ -1,10 +1,12 @@
 pipeline {
   agent any
   stages{
-      stage("Clean & Build"){
+      stage("Clean"){
         steps{
           bat './gradlew clean'
         }
+      }
+      stage("Build")
         steps{
           bat './gradlew build'
         }
