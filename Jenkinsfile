@@ -1,14 +1,17 @@
 pipeline {
   agent any
   stages{
-      stage("Start Emulator"){
+      stage("Clean & Build"){
         steps{
-          bat './jenkins/scripts/startEmulator.bat'
+          bat './gradlew clean'
+        }
+        steps{
+          bat './gradlew build'
         }
       }
       stage("Espresso Test"){
         steps{
-          bat '.jenkins/scripts/viewsTests.bat'
+          bat './jenkins/scripts/viewsTests.bat'
         }
       }
   }
