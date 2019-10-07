@@ -15,7 +15,7 @@ pipeline {
         steps{
           bat 'start /b emulator -avd Nexus_5_API_26'
           // TODO: this must be a python script
-          bat 'TIMEOUT /T 15'
+          bat 'TIMEOUT /T 15 /NOBREAK'
           bat 'adb devices -l'
         }
       }
