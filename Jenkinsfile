@@ -22,10 +22,10 @@ pipeline {
           bat './jenkins/scripts/viewsTests.bat'
         }
       }
-      post{
+  }
+  post{
         always{
           bat 'adb -s emulator-5554 emu kill'
         }
       }
-  }
 }
