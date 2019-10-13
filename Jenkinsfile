@@ -23,7 +23,7 @@ pipeline {
   }
   post{
         always{
-          echo "====++++END OF PIPELINE++++===="
+          junit 'app/build/outputs/androidTest-results/connected/*.xml'
         }
       }
 }
