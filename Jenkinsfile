@@ -11,20 +11,24 @@ pipeline {
           bat './gradlew build'
         }
       }
-      stage("Start Emulator"){
-        steps{
-          bat './jenkins/scripts/startEmulator.bat'
-        }
-      }
       stage("Android Test"){
         steps{
-          bat './jenkins/scripts/viewsTests.bat'
+          bat 'start /b emulator -avd Nexus_5_API_26'
+        }
+        sleep 10
+        steps{
+          bat 'adb devices -l'
+        }
+        steps{
+          bat './gradlew connectedAndroidTest'
+        }
+        steps{
+          bat 'adb -s emulator-5554 emu kill'
         }
       }
   }
   post{
         always{
-          bat 'adb -s emulator-5554 emu kill'
         }
       }
 }
