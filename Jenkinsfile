@@ -15,8 +15,8 @@ pipeline {
         steps{
           bat 'start /b emulator -avd Nexus_5_API_26'
         }
-        sleep 10
         steps{
+          sleep 10
           bat 'adb devices -l'
         }
         steps{
