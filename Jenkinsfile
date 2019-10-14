@@ -14,6 +14,7 @@ pipeline {
       stage("Start Emulator"){
         steps{
           bat 'start /b emulator -avd Nexus_5_API_26 -no-snapshot -no-boot-anim -no-window'
+          sleep 5
         }
       }
       stage("Android Test"){
