@@ -1,6 +1,11 @@
 pipeline {
   agent any
   stages{
+      stage("Start Emulator"){
+        steps{
+          bat 'start /b emulator -avd Nexus_5_API_26 -wipe-data -no-snapshot -no-boot-anim'
+        }
+      }
       stage("Clean"){
         steps{
           bat './gradlew clean'
@@ -13,10 +18,13 @@ pipeline {
       }
       stage("Android Test"){
         steps{
-          bat 'start /b emulator -avd Nexus_5_API_26'
-          sleep 10
           bat 'adb devices -l'
           bat './gradlew connectedAndroidTest'
+          
+        }
+      }
+      stage("Close Emulator"){
+        steps{
           bat 'adb -s emulator-5554 emu kill'
         }
       }
