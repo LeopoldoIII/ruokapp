@@ -2,7 +2,8 @@ package com.ruokapp.core.db;
 
 public class DBUtils {
 
-    public static final int DB_VERSION = 20191009;
+    public static final String DB_NAME = "ruokapp_db";
+    public static final int DB_VERSION = 201910;
 
     public static final String USER_TABLE = "users";
 
