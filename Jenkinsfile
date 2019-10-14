@@ -1,11 +1,6 @@
 pipeline {
   agent any
   stages{
-      stage("Start Emulator"){
-        steps{
-          bat 'start /b emulator -avd Nexus_5_API_26 -no-snapshot -no-boot-anim -no-window'
-        }
-      }
       stage("Clean"){
         steps{
           bat './gradlew clean'
@@ -14,6 +9,11 @@ pipeline {
       stage("Build"){
         steps{
           bat './gradlew build'
+        }
+      }
+      stage("Start Emulator"){
+        steps{
+          bat 'start /b emulator -avd Nexus_5_API_26 -no-snapshot -no-boot-anim -no-window'
         }
       }
       stage("Android Test"){
