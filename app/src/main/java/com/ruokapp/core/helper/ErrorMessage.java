@@ -18,4 +18,6 @@ public class ErrorMessage {
     public static final String EMAIL_REGISTERED_ERROR = "This email was register";
 
     public static final String REGISTER_ERROR = "Could not register. Try again";
+
+    public static final String LOGIN_ERROR = "Verify your email and/or password";
 }

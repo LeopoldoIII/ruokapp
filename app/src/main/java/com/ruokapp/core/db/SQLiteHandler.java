@@ -6,6 +6,14 @@ import android.database.Cursor;
 
 public class SQLiteHandler {
 
+    public static ConnectionSQLiteHelper createConnection(Context context){
+        try {
+            return new ConnectionSQLiteHelper(context, DBUtils.DB_NAME,null, DBUtils.DB_VERSION);
+        } catch (Exception e){
+        }
+        return null;
+    }
+
     public static long insertUser(Context context, ContentValues data){
         try {
             return createConnection(context)
@@ -27,12 +35,17 @@ public class SQLiteHandler {
         }
     }
 
-    public static ConnectionSQLiteHelper createConnection(Context context){
+    public static Cursor searchUserFromLogin(Context context, String[] fields, String[] params){
         try {
-            return new ConnectionSQLiteHelper(context, DBUtils.DB_NAME,null, DBUtils.DB_VERSION);
+            return createConnection(context)
+                    .getReadableDatabase()
+                    .query(DBUtils.USER_TABLE,fields
+                            ,String.format("%s=? AND %s=?",
+                                    DBUtils.USER_EMAIL,DBUtils.USER_PASSWORD)
+                            ,params,null,null,null);
         } catch (Exception e){
+            return null;
         }
-        return null;
     }
 
 }
