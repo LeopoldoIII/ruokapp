@@ -46,7 +46,6 @@ public class SignUpTest {
                         isDisplayed()));
         appCompatTextView.perform(click());
     }
-
     @Test
     public void userCanRegister(){
         String username = "NewUser";
