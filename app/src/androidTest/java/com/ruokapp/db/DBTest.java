@@ -113,27 +113,4 @@ public class DBTest {
         Assert.assertEquals("The food reference is different","1234",cursor.getString(2));
     }
 
-    @Test
-    public void verifyLoginProcess(){
-        //data
-        String name = "UserRegistered";
-        String email = "email@registered.com";
-        String pass = "pass.1234";
-
-        // Pre-condition
-        ContentValues data = new ContentValues();
-        data.put(DBUtils.USER_NAME,name);
-        data.put(DBUtils.USER_EMAIL, email);
-        data.put(DBUtils.USER_PASSWORD, pass);
-        SQLiteHandler.insertUser(InstrumentationRegistry.getTargetContext(),data);
-        sqLiteDatabase.insert(DBUtils.USER_TABLE,DBUtils.ID_USER,data);
-
-        String[] fields = {DBUtils.ID_USER,DBUtils.USER_EMAIL, DBUtils.USER_NAME, DBUtils.USER_PASSWORD};
-        String[] params = {email,pass};
-        Cursor cursor = SQLiteHandler.searchUserFromLogin(InstrumentationRegistry.getTargetContext(),fields,params);
-        cursor.moveToFirst();
-        Assert.assertEquals(cursor.getString(1),email);
-        Assert.assertEquals(cursor.getString(2),name);
-        Assert.assertEquals(cursor.getString(3),pass);
-    }
 }
