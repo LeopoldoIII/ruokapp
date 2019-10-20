@@ -8,11 +8,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ruokapp.R;
+import com.ruokapp.core.Session;
 
 public class DiscoverActivity extends AppCompatActivity {
 
@@ -49,9 +49,10 @@ public class DiscoverActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case  R.id.action_logout:
-                finish();
+                Session.getInstance(this).closeSession();
                 intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
+                finish();
                 break;
             case  R.id.action_about_us:
                 intent = new Intent(this, AboutUsActivity.class);

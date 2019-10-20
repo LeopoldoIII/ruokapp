@@ -4,12 +4,12 @@ import android.content.ContentValues;
 
 import androidx.test.InstrumentationRegistry;
 import androidx.test.espresso.Espresso;
-import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.rule.ActivityTestRule;
 
 import com.ruokapp.R;
+import com.ruokapp.core.Session;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
 import com.ruokapp.views.WelcomeActivity;
@@ -21,12 +21,9 @@ import org.junit.Test;
 
 import java.util.Date;
 
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
 
 public class SignUpTest {
 
@@ -35,22 +32,15 @@ public class SignUpTest {
 
     @Before
     public void startUp(){
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        ViewInteraction appCompatTextView = onView(
-                allOf(withId(R.id.link_register), withText("Not account yet? Create one"),
-                        isDisplayed()));
-        appCompatTextView.perform(click());
+        Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
+        waitForWelcomeActivity();
+        Espresso.onView(withId(R.id.link_register)).perform(ViewActions.click());
     }
 
     @Test
     public void userCanRegister(){
         String username = "NewUser";
-        String email = String.format("test_email+%s@test.email.com",new Date().getTime());
+        String email = String.format("email+%s@test.com",new Date().getTime());
         String password = "pass.1234";
 
         Espresso.onView(withId(R.id.input_user)).perform(ViewActions.typeText(username));
@@ -69,7 +59,7 @@ public class SignUpTest {
     @Test
     public void userRegistered(){
         String username = "UserRegistered";
-        String email = String.format("test_email+%s@test.email.com",new Date().getTime());
+        String email = String.format("email+%s@test.com",new Date().getTime());
         String password = "pass.1234";
 
         //Pre-Condition
@@ -90,7 +80,7 @@ public class SignUpTest {
     @Test
     public void userWithInvalidUsername(){
         String username = "Invalid!User#Name";
-        String email = String.format("test_email+%s@test.email.com",new Date().getTime());
+        String email = String.format("email+%s@test.com",new Date().getTime());
         String password = "pass.1234";
 
         Espresso.onView(withId(R.id.input_user)).perform(ViewActions.typeText(username));
@@ -107,7 +97,7 @@ public class SignUpTest {
     @Test
     public void userWithInvalidMail(){
         String username = "InvalidEmail";
-        String email = String.format("test_email+%s#test.email.com",new Date().getTime());
+        String email = "invalid_email#test.email.com";
         String password = "pass.1234";
 
         Espresso.onView(withId(R.id.input_user)).perform(ViewActions.typeText(username));
@@ -124,7 +114,7 @@ public class SignUpTest {
     @Test
     public void userWithInvalidPass(){
         String username = "InvalidPass";
-        String email = String.format("test_email+%s@test.email.com",new Date().getTime());
+        String email = String.format("email+%s@test.com",new Date().getTime());
         String password = "pass";
 
         Espresso.onView(withId(R.id.input_user)).perform(ViewActions.typeText(username));
@@ -141,16 +131,16 @@ public class SignUpTest {
     @Test
     public void userWithInvalidConfirmPass(){
         String username = "InvalidConfirmPass";
-        String email = String.format("test_email+%s@test.email.com",new Date().getTime());
+        String email = String.format("email+%s@test.com",new Date().getTime());
         String password = "pass.1234";
-        String confirmpass = "pass1234";
+        String confirmPass = "pass1234";
 
         Espresso.onView(withId(R.id.input_user)).perform(ViewActions.typeText(username));
         Espresso.onView(withId(R.id.input_email)).perform(ViewActions.typeText(email));
         Espresso.closeSoftKeyboard();
         Espresso.onView(withId(R.id.input_password)).perform(ViewActions.typeText(password));
         Espresso.closeSoftKeyboard();
-        Espresso.onView(withId(R.id.input_password2)).perform(ViewActions.typeText(confirmpass));
+        Espresso.onView(withId(R.id.input_password2)).perform(ViewActions.typeText(confirmPass));
         Espresso.closeSoftKeyboard();
         Espresso.onView(withId(R.id.btn_sign_up)).perform(ViewActions.click());
         Espresso.onView(withId(R.id.btn_sign_up)).check(ViewAssertions.matches(isDisplayed()));
@@ -162,6 +152,14 @@ public class SignUpTest {
         user.put(DBUtils.USER_EMAIL, email);
         user.put(DBUtils.USER_PASSWORD, pass);
         return SQLiteHandler.insertUser(InstrumentationRegistry.getTargetContext(),user);
+    }
+
+    private void waitForWelcomeActivity(){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

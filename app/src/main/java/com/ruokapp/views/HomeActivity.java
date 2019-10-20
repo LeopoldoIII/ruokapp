@@ -8,10 +8,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 
 import com.ruokapp.R;
+import com.ruokapp.core.Session;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -40,9 +39,10 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = null;
         switch (item.getItemId()){
             case R.id.action_logout:
-                finish();
+                Session.getInstance(this).closeSession();
                 intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
+                finish();
                 break;
             case R.id.action_settings:
                 intent = new Intent(this, SettingsActivity.class);

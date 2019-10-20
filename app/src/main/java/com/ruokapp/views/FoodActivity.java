@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ruokapp.R;
+import com.ruokapp.core.Session;
 
 public class FoodActivity extends AppCompatActivity {
 
@@ -29,8 +30,10 @@ public class FoodActivity extends AppCompatActivity {
         Intent intent = null;
         switch (item.getItemId()){
             case R.id.action_logout:
+                Session.getInstance(this).closeSession();
                 intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
+                finish();
                 break;
             case R.id.action_settings:
                 intent = new Intent(this, SettingsActivity.class);
