@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.ruokapp.R;
 import com.ruokapp.core.Food;
+import com.ruokapp.core.Session;
 import com.ruokapp.views.adapter.Adapter;
 
 import java.util.ArrayList;
@@ -53,8 +54,10 @@ public class FavActivity extends AppCompatActivity {
         Intent intent = null;
         switch (item.getItemId()){
             case R.id.action_logout:
+                Session.getInstance(this).closeSession();
                 intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
+                finish();
                 break;
             case R.id.action_settings:
                 intent = new Intent(this, SettingsActivity.class);
