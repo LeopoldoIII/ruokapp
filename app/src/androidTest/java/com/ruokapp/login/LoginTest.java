@@ -1,12 +1,9 @@
 package com.ruokapp.login;
 
 import android.content.ContentValues;
-import android.database.Cursor;
 
 import androidx.test.InstrumentationRegistry;
 import androidx.test.espresso.Espresso;
-import androidx.test.espresso.ViewAssertion;
-import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.rule.ActivityTestRule;
@@ -14,22 +11,16 @@ import androidx.test.rule.ActivityTestRule;
 import com.ruokapp.R;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
-import com.ruokapp.views.LoginActivity;
 import com.ruokapp.views.WelcomeActivity;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.Date;
 
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
 
 public class LoginTest {
 
