@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ruokapp.R;
+import com.ruokapp.core.Session;
 import com.ruokapp.core.User;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
@@ -140,6 +141,9 @@ public class SignUpActivity extends AppCompatActivity {
         try {
             long id = SQLiteHandler.insertUser(this,user);
             User.getInstanceUser().setUser(id, inputUsername.getText().toString(),inputEmail.getText().toString());
+            Session.getInstance(this).createSession(
+                    inputEmail.getText().toString(),
+                    inputPassword.getText().toString());
             return true;
         } catch (Exception e){
             e.printStackTrace();

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ruokapp.R;
+import com.ruokapp.core.Session;
 import com.ruokapp.core.User;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
@@ -50,6 +51,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public void login(View v){
         if (validateForm() && validateUserExist()) {
+            Session.getInstance(this).createSession(
+                    inputEmail.getText().toString(),
+                    inputPassword.getText().toString());
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         } else {
