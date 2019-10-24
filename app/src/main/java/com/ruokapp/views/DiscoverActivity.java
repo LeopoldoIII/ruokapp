@@ -13,6 +13,11 @@ import android.widget.Toast;
 
 import com.ruokapp.R;
 import com.ruokapp.core.Session;
+import com.ruokapp.core.service.ServiceHandle;
+
+import org.json.JSONArray;
+
+import java.util.HashMap;
 
 public class DiscoverActivity extends AppCompatActivity {
 
@@ -28,6 +33,11 @@ public class DiscoverActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Added to Matches list", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void loadFood(){
+        JSONArray recipe = ServiceHandle.getRecipe();
+        HashMap<String,String> recipeInfo;
     }
 
     @Override

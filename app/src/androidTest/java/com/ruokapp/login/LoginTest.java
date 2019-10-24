@@ -9,6 +9,7 @@ import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.rule.ActivityTestRule;
 
 import com.ruokapp.R;
+import com.ruokapp.core.Session;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
 import com.ruokapp.views.WelcomeActivity;
@@ -34,6 +35,7 @@ public class LoginTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
     }
 
     @Test
