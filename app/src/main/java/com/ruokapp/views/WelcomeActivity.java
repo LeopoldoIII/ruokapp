@@ -8,6 +8,7 @@ import android.os.Handler;
 
 import com.ruokapp.R;
 import com.ruokapp.core.Session;
+import com.ruokapp.core.service.ServiceHandle;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -18,7 +19,6 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
         hold.postDelayed(new Runnable() {
             @Override
             public void run() {

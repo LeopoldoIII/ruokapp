@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.ruokapp.R;
-import com.ruokapp.core.Food;
+import com.ruokapp.core.RecipeRef;
 import com.ruokapp.core.Session;
 import com.ruokapp.views.adapter.Adapter;
 
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class FavActivity extends AppCompatActivity {
 
-    private ArrayList<Food> foods = new ArrayList<Food>();
+    private ArrayList<RecipeRef> foods = new ArrayList<RecipeRef>();
     private Adapter matchsAdapter ;
 
     @Override
@@ -28,8 +28,8 @@ public class FavActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favs);
         ListView listMatches = (ListView) findViewById(R.id.food_matches);
-        foods.add(new Food("Sopa de Calabaza1", "20'"));
-        foods.add(new Food("Sopa de Calabaza2", "30'"));
+        foods.add(new RecipeRef(1234,"Sopa de Calabaza1", "urlToImg","20'"));
+        foods.add(new RecipeRef(4321,"Chori Pan", "urlToImg","10'"));
         matchsAdapter = new Adapter(getApplicationContext(), foods);
         listMatches.setAdapter(matchsAdapter);
 
