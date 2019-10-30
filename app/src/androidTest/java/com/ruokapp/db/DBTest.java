@@ -58,7 +58,6 @@ public class DBTest {
         data.put(DBUtils.USER_NAME, userNameTest);
         data.put(DBUtils.USER_EMAIL, emailTest);
         data.put(DBUtils.USER_PASSWORD, userPassTest);
-        data.put(DBUtils.PREF_ITALIAN, 1);
 
         idUser = sqLiteDatabase.insert(DBUtils.USER_TABLE,DBUtils.ID_USER,data);
         Assert.assertTrue(idUser!=0);
@@ -71,7 +70,7 @@ public class DBTest {
 
         SQLiteDatabase sqLiteDatabaseRead = connection.getReadableDatabase();
         String[] params = {Long.toString(idUser)};
-        String[] fields = {DBUtils.ID_USER,DBUtils.USER_EMAIL, DBUtils.USER_NAME, DBUtils.USER_PASSWORD, DBUtils.PREF_ITALIAN};
+        String[] fields = {DBUtils.ID_USER,DBUtils.USER_EMAIL, DBUtils.USER_NAME, DBUtils.USER_PASSWORD};
         Cursor cursor = sqLiteDatabaseRead.query(DBUtils.USER_TABLE,fields,DBUtils.ID_USER+"=?",params,null,null,null);
         cursor.moveToFirst();
         Assert.assertEquals("The Columns count is different",cursor.getColumnCount(), fields.length);
@@ -79,7 +78,6 @@ public class DBTest {
         Assert.assertEquals("The email info is different",emailTest,cursor.getString(1));
         Assert.assertEquals("The user name is different",userNameTest,cursor.getString(2));
         Assert.assertEquals("The user password is different",userPassTest,cursor.getString(3));
-        Assert.assertEquals("The user preference is different","1",cursor.getString(4));
     }
 
     @Test
