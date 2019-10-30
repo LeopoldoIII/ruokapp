@@ -2,6 +2,8 @@ package com.ruokapp.core.service;
 
 import android.os.StrictMode;
 
+import com.ruokapp.core.Recipe;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,16 +17,25 @@ import java.net.URL;
 
 public class ServiceHandle {
 
-    private static URL url;
-    private static HttpURLConnection connection;
-    private static BufferedReader bufferedReader;
+    private URL url;
+    private HttpURLConnection connection;
+    private BufferedReader bufferedReader;
 
-    private static String inputLine;
-    private static StringBuffer response = new StringBuffer();
-    private static JSONObject jsonObject;
-    private static JSONArray recipes;
+    private String inputLine;
+    private StringBuffer response = new StringBuffer();
+    private JSONObject jsonObject;
+    private JSONArray recipes;
 
-    private static void connection() throws IOException {
+    private static ServiceHandle serviceHandle;
+
+    public static ServiceHandle getInstance(){
+        if (serviceHandle == null){
+            serviceHandle = new ServiceHandle();
+        }
+        return serviceHandle;
+    }
+
+    public void connection() throws IOException {
         StrictMode.setThreadPolicy(
                 new StrictMode.ThreadPolicy.
                         Builder().permitAll().build());
@@ -38,7 +49,7 @@ public class ServiceHandle {
         System.out.println(connection.getResponseCode());
     }
 
-    public static JSONArray getRecipe(){
+    public void getRecipe(){
 
         try {
             connection();
@@ -48,17 +59,23 @@ public class ServiceHandle {
             jsonObject = new JSONObject(response.toString());
 
             recipes = jsonObject.getJSONArray("recipes");
-//            for(int j=0;j<recipes.length();j++){
-//                //System.out.println(recipes.getJSONObject(j).optString("id"));
-//            }
+            for(int j=0;j<recipes.length();j++){
+                Recipe.getInstance().setId(recipes.getJSONObject(j).optInt("id"));
+                Recipe.getInstance().setTitle(recipes.getJSONObject(j).optString("title"));
+                Recipe.getInstance().setImage(recipes.getJSONObject(j).optString("image"));
+                Recipe.getInstance().setReadyInMinutes(recipes.getJSONObject(j).optString("readyInMinutes"));
+            }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
-        } finally {
-            return recipes;
         }
+    }
+
+    public void closeConnection(){
+        connection.disconnect();
+        serviceHandle = null;
     }
 }
