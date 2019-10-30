@@ -48,4 +48,14 @@ public class SQLiteHandler {
         }
     }
 
+    public static long insertFoodRef(Context context, ContentValues data){
+        try {
+            return createConnection(context)
+                    .getWritableDatabase()
+                    .insert(DBUtils.FOOD_REF_TABLE,DBUtils.ID_FOOD_REF_TABLE,data);
+        } catch (Exception e){
+            return -1;
+        }
+    }
+
 }

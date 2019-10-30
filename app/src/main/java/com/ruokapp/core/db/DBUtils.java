@@ -14,9 +14,6 @@ public class DBUtils {
     public static final String PREF_VEGAN = "pref_vegan";
     public static final String PREF_VEGETARIAN = "pref_vegetarian";
     public static final String PREF_GLUTEN_FREE = "pref_gluten_free";
-    public static final String PREF_CHINESE = "pref_chinese";
-    public static final String PREF_ITALIAN = "pref_italian";
-    public static final String PREF_JAPANESE = "pref_japanese";
 
     public static final String CREATE_TABLE_USERS = "CREATE TABLE "+USER_TABLE+" (" +
             ID_USER+" INTEGER PRIMARY KEY, "+
@@ -25,10 +22,7 @@ public class DBUtils {
             USER_PASSWORD+" TEXT NOT NULL, "+
             PREF_VEGAN+" INTEGER, "+
             PREF_VEGETARIAN+" INTEGER, "+
-            PREF_GLUTEN_FREE+" INTEGER, "+
-            PREF_CHINESE+" INTEGER, "+
-            PREF_ITALIAN+" INTEGER, "+
-            PREF_JAPANESE+" INTEGER)";
+            PREF_GLUTEN_FREE+" INTEGER)";
 
     public static final String FOOD_REF_TABLE = "food_ref";
 
