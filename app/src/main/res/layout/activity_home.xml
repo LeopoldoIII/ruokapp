@@ -18,27 +18,35 @@
         android:onClick="goToDiscover"
         android:layout_weight="0.5">
 
-        <Button
-            android:id="@+id/buttonExplorer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginEnd="323dp"
-            android:layout_marginRight="323dp"
-            android:background="@color/colorPrimary"
-            android:layout_centerInParent="true"
-            android:text="@string/explorer"
-            android:onClick="goToDiscover"/>
-
-        <ImageView
-            android:id="@+id/discover_image"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clickable="true"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/discover_home"
-            android:onClick="goToDiscover"/>
+            android:clickable="true">
+
+            <Button
+                android:id="@+id/buttonExplorer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@color/colorPrimary"
+                android:onClick="goToDiscover"
+                android:text="@string/explorer"
+                app:layout_constraintBottom_toBottomOf="@+id/discover_image"
+                app:layout_constraintEnd_toEndOf="@+id/discover_image"
+                app:layout_constraintStart_toStartOf="@+id/discover_image"
+                app:layout_constraintTop_toTopOf="@+id/discover_image" />
+
+            <ImageView
+                android:id="@+id/discover_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/discover_home"
+                android:onClick="goToDiscover"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>
 
