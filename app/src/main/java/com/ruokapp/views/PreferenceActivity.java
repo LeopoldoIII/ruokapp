@@ -91,4 +91,10 @@ public class PreferenceActivity extends AppCompatActivity {
         User.getInstanceUser().getPreference().setPrefGlutenFree(checkboxGlutenFree.isChecked());
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        savePreferences();
+        finish();
+    }
 }
