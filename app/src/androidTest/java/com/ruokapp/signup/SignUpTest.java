@@ -9,7 +9,7 @@ import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.rule.ActivityTestRule;
 
 import com.ruokapp.R;
-import com.ruokapp.core.Session;
+import com.ruokapp.core.session.Session;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
 import com.ruokapp.views.WelcomeActivity;
@@ -53,7 +53,6 @@ public class SignUpTest {
         Espresso.onView(withId(R.id.btn_sign_up)).perform(ViewActions.click());
         Espresso.onView(withText("Settings")).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.title_diet)).check(ViewAssertions.matches(isDisplayed()));
-        Espresso.onView(withId(R.id.title_cuisines)).check(ViewAssertions.matches(isDisplayed()));
     }
 
     @Test
@@ -156,7 +155,7 @@ public class SignUpTest {
 
     private void waitForWelcomeActivity(){
         try {
-            Thread.sleep(2000);
+            Thread.sleep(2500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

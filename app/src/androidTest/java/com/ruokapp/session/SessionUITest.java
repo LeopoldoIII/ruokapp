@@ -12,7 +12,7 @@ import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.rule.ActivityTestRule;
 
 import com.ruokapp.R;
-import com.ruokapp.core.Session;
+import com.ruokapp.core.session.Session;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
 import com.ruokapp.views.WelcomeActivity;

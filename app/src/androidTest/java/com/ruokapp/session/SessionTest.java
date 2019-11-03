@@ -2,7 +2,7 @@ package com.ruokapp.session;
 
 import androidx.test.InstrumentationRegistry;
 
-import com.ruokapp.core.Session;
+import com.ruokapp.core.session.Session;
 
 import org.junit.After;
 import org.junit.Assert;
