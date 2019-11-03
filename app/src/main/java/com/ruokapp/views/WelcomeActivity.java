@@ -7,8 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.ruokapp.R;
-import com.ruokapp.core.Session;
-import com.ruokapp.core.service.ServiceHandle;
+import com.ruokapp.core.session.Session;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -34,7 +33,7 @@ public class WelcomeActivity extends AppCompatActivity {
                     finish();
                 }
             }
-        }, 2000);
+        }, 500);
 
 
     }

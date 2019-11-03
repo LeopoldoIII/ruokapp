@@ -12,8 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.ruokapp.R;
-import com.ruokapp.core.RecipeRef;
-import com.ruokapp.core.Session;
+import com.ruokapp.core.recipe.RecipeRef;
+import com.ruokapp.core.session.Session;
 import com.ruokapp.views.adapter.Adapter;
 
 import java.util.ArrayList;
@@ -60,7 +60,7 @@ public class FavActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.action_settings:
-                intent = new Intent(this, SettingsActivity.class);
+                intent = new Intent(this, PreferenceActivity.class);
                 startActivity(intent);
                 break;
             case  R.id.action_about_us:
