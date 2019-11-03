@@ -58,4 +58,27 @@ public class SQLiteHandler {
         }
     }
 
+    public static Cursor selectUserPreferences(Context context,String[] fields, String[] params){
+        try {
+            return createConnection(context)
+                    .getReadableDatabase()
+                    .query(DBUtils.USER_TABLE,fields
+                            ,String.format("%s=?",
+                                    DBUtils.ID_USER)
+                            ,params,null,null,null);
+        } catch (Exception e){
+            return null;
+        }
+    }
+
+    public static int updatePreferences(Context context, ContentValues data, String[] params){
+        try{
+            return createConnection(context)
+                    .getWritableDatabase()
+                    .update(DBUtils.USER_TABLE, data,DBUtils.ID_USER+"=?",params);
+        } catch (Exception e){
+            return -1;
+        }
+    }
+
 }
