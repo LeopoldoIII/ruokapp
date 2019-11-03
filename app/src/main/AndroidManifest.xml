@@ -12,7 +12,7 @@
         <activity android:name=".views.AboutUsActivity"/>
         <activity android:name=".views.HomeActivity" />
         <activity
-            android:name=".views.SettingsActivity"
+            android:name=".views.PreferenceActivity"
             android:label="@string/title_activity_settings" />
         <activity
             android:name=".views.FoodActivity"
