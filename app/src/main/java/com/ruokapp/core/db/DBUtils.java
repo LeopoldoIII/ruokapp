@@ -20,9 +20,9 @@ public class DBUtils {
             USER_NAME+" TEXT NOT NULL, "+
             USER_EMAIL+" TEXT NOT NULL, "+
             USER_PASSWORD+" TEXT NOT NULL, "+
-            PREF_VEGAN+" INTEGER, "+
-            PREF_VEGETARIAN+" INTEGER, "+
-            PREF_GLUTEN_FREE+" INTEGER)";
+            PREF_VEGAN+" INTEGER DEFAULT 0, "+
+            PREF_VEGETARIAN+" INTEGER DEFAULT 0, "+
+            PREF_GLUTEN_FREE+" INTEGER DEFAULT 0)";
 
     public static final String FOOD_REF_TABLE = "food_ref";
 
