@@ -10,10 +10,22 @@ public class ServiceHelper {
 
     private static final String GET_RANDOM_RECIPES_URL = "https://api.spoonacular.com/recipes/random?number=1";
 
+    private static final String TAGS = "&tags=";
+
 
     public static String getRecipes(){
         return String.format(
                 "%s%s%s",GET_RANDOM_RECIPES_URL,API_KEY_PARAM,API_KEY);
+    }
+
+    public static String getRecipes(String[] tags){
+        String result = getRecipes()+TAGS;
+        for (int i=0; i<tags.length;i++) {
+            if (tags[i] != null){
+                result += tags[i]+",";
+            }
+        }
+        return result;
     }
 
 
