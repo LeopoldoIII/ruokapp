@@ -67,7 +67,11 @@ public class DiscoverActivity extends AppCompatActivity {
     }
 
     private void loadRecipe(){
-        ServiceHandle.getInstance().getRecipe();
+        if(User.getInstanceUser().getPreference().hasPreferences()){
+            ServiceHandle.getInstance().getRecipe(User.getInstanceUser().getPreference().getPreferences());
+        } else {
+            ServiceHandle.getInstance().getRecipe();
+        }
         titleRecipe.setText(Recipe.getInstance().getTitle());
         timePreparation.setText(Recipe.getInstance().getReadyInMinutes());
         imageRef.setImageBitmap(ImageHandler.getImageFromUrl(Recipe.getInstance().getImage()));
