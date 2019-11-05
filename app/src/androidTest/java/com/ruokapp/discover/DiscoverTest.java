@@ -14,6 +14,7 @@ import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
 import com.ruokapp.views.WelcomeActivity;
 
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -34,8 +35,14 @@ public class DiscoverTest {
         Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
     }
 
+    @AfterClass
+    public static void tearDownSuite(){
+        Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
+    }
+
     @Before
     public void startUp(){
+        Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
         // Data
         String username = "UserRegistered";
         String email = String.format("registered+%s@test.com", new Date().getTime());

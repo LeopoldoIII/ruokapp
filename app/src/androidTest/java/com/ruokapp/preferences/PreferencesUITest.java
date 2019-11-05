@@ -15,12 +15,12 @@ import com.ruokapp.R;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
 import com.ruokapp.core.session.Session;
-import com.ruokapp.core.user.User;
 import com.ruokapp.views.WelcomeActivity;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -43,6 +43,11 @@ public class PreferencesUITest {
 
     @BeforeClass
     public static void setUpSuite(){
+        Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
+    }
+
+    @AfterClass
+    public static void tearDownSuite(){
         Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
     }
 
