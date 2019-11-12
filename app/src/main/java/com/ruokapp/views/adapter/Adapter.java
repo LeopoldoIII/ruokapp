@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ruokapp.R;
-import com.ruokapp.core.RecipeRef;
+import com.ruokapp.core.recipe.RecipeRef;
 
 import java.util.ArrayList;
 

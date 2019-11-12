@@ -35,18 +35,19 @@
     <string name="title_preparation">Preparacion</string>
     <string name="preparation_steps">- 1. Primer paso de preparacion \n\n- 2. Segundo paso de preparacion que puede ser largo\n\n- 3. Tercer paso de preparacion\n\n- 4. El cuerto paso de preparacion es mas largo para ver como funciona el scroll</string>
 
-    <!-- Settings -->
+    <!-- Preferences -->
     <string name="title_user">Username</string>
     <string name="title_diets">Diets</string>
     <string name="title_vegetarian">Vegetarian</string>
     <string name="title_vegan">Vegan</string>
     <string name="title_gluten_free">Gluten Free</string>
-    <string name="title_cuisines">Cuisines</string>
-    <string name="title_chinese">Chinese</string>
-    <string name="title_italian">Italian</string>
-    <string name="title_japanese">Japanese</string>
 
     <!-- About Us -->
     <string name="title_about_us">About Us</string>
     <string name="about_us">Ruokapp</string>
+
+    <!-- Menu -->
+    <string name="title_preference">Preferences</string>
+    <string name="logout">Logout</string>
+
 </resources>

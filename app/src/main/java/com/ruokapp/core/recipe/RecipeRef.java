@@ -1,4 +1,4 @@
-package com.ruokapp.core;
+package com.ruokapp.core.recipe;
 
 public class RecipeRef {
 

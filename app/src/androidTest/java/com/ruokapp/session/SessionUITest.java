@@ -12,7 +12,7 @@ import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.rule.ActivityTestRule;
 
 import com.ruokapp.R;
-import com.ruokapp.core.Session;
+import com.ruokapp.core.session.Session;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
 import com.ruokapp.views.WelcomeActivity;
@@ -20,7 +20,9 @@ import com.ruokapp.views.WelcomeActivity;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -37,6 +39,16 @@ public class SessionUITest {
 
     @Rule
     public ActivityTestRule<WelcomeActivity> activityTestRule = new ActivityTestRule<>(WelcomeActivity.class);
+
+    @BeforeClass
+    public static void setUpSuite(){
+        Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
+    }
+
+    @AfterClass
+    public static void tearDownSuite(){
+        Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
+    }
 
     @Before
     public void setUp(){
