@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +15,9 @@ import android.widget.ListView;
 import com.ruokapp.R;
 import com.ruokapp.core.RecipeRef;
 import com.ruokapp.core.Session;
+import com.ruokapp.core.User;
+import com.ruokapp.core.db.DBUtils;
+import com.ruokapp.core.db.SQLiteHandler;
 import com.ruokapp.views.adapter.Adapter;
 
 import java.util.ArrayList;
@@ -27,6 +31,11 @@ public class FavActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favs);
+        String[] fields = {DBUtils.ID_FOOD_REF};
+        String[] params = {String.format("%s",User.getInstanceUser().getId())};
+        Cursor cursor = SQLiteHandler.getRecipesFromUser(this,fields,params);
+        cursor.moveToFirst();
+        String id = cursor.getString(0);
         ListView listMatches = (ListView) findViewById(R.id.food_matches);
         foods.add(new RecipeRef(1234,"Sopa de Calabaza1", "urlToImg","20'"));
         foods.add(new RecipeRef(4321,"Chori Pan", "urlToImg","10'"));

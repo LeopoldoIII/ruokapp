@@ -58,4 +58,15 @@ public class SQLiteHandler {
         }
     }
 
+    public static Cursor getRecipesFromUser(Context context, String[] fields, String[] params){
+        try {
+            return createConnection(context)
+                    .getReadableDatabase()
+                    .query(DBUtils.FOOD_REF_TABLE,fields,DBUtils.ID_USER+"=?",params,
+                            null,null,null);
+        } catch (Exception e){
+            return null;
+        }
+    }
+
 }
