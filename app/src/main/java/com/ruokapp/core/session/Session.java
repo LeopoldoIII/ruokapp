@@ -1,4 +1,4 @@
-package com.ruokapp.core;
+package com.ruokapp.core.session;
 
 import android.content.Context;
 import android.content.SharedPreferences;

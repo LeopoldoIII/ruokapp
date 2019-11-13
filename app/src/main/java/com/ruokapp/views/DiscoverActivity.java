@@ -14,9 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ruokapp.R;
-import com.ruokapp.core.Recipe;
-import com.ruokapp.core.Session;
-import com.ruokapp.core.User;
+import com.ruokapp.core.recipe.Recipe;
+import com.ruokapp.core.session.Session;
+import com.ruokapp.core.user.User;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
 import com.ruokapp.core.helper.ErrorMessage;
@@ -67,7 +67,11 @@ public class DiscoverActivity extends AppCompatActivity {
     }
 
     private void loadRecipe(){
-        ServiceHandle.getInstance().getRecipe();
+        if(User.getInstanceUser().getPreference().hasPreferences()){
+            ServiceHandle.getInstance().getRecipe(User.getInstanceUser().getPreference().getPreferences());
+        } else {
+            ServiceHandle.getInstance().getRecipe();
+        }
         titleRecipe.setText(Recipe.getInstance().getTitle());
         timePreparation.setText(Recipe.getInstance().getReadyInMinutes());
         imageRef.setImageBitmap(ImageHandler.getImageFromUrl(Recipe.getInstance().getImage()));
@@ -85,7 +89,7 @@ public class DiscoverActivity extends AppCompatActivity {
         Intent intent = null;
         switch (item.getItemId()){
             case R.id.action_settings:
-                intent = new Intent(this,SettingsActivity.class);
+                intent = new Intent(this, PreferenceActivity.class);
                 startActivity(intent);
                 break;
             case R.id.action_fav:

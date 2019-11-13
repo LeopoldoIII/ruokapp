@@ -2,7 +2,7 @@ package com.ruokapp.core.service;
 
 import android.os.StrictMode;
 
-import com.ruokapp.core.Recipe;
+import com.ruokapp.core.recipe.Recipe;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,7 +40,6 @@ public class ServiceHandle {
                 new StrictMode.ThreadPolicy.
                         Builder().permitAll().build());
 
-        url = new URL(ServiceHelper.getRecipes());
         connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod(ServiceHelper.METHOD_GET);
         connection.connect();
@@ -49,10 +48,23 @@ public class ServiceHandle {
         System.out.println(connection.getResponseCode());
     }
 
-    public void getRecipe(){
-
+    public void getRecipe(String[] tags){
         try {
+            url = new URL(ServiceHelper.getRecipes(tags));
             connection();
+            obtainRecipe();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void obtainRecipe() throws IOException, JSONException{
+
             while ((inputLine = bufferedReader.readLine())!=null){
                 response.append(inputLine);
             }
@@ -65,6 +77,13 @@ public class ServiceHandle {
                 Recipe.getInstance().setImage(recipes.getJSONObject(j).optString("image"));
                 Recipe.getInstance().setReadyInMinutes(recipes.getJSONObject(j).optString("readyInMinutes"));
             }
+    }
+
+    public void getRecipe(){
+        try {
+            url = new URL(ServiceHelper.getRecipes());
+            connection();
+            obtainRecipe();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

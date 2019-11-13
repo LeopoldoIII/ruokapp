@@ -8,14 +8,16 @@ import androidx.test.espresso.action.ViewActions;
 import androidx.test.rule.ActivityTestRule;
 
 import com.ruokapp.R;
-import com.ruokapp.core.Recipe;
-import com.ruokapp.core.Session;
+import com.ruokapp.core.recipe.Recipe;
+import com.ruokapp.core.session.Session;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
 import com.ruokapp.views.WelcomeActivity;
 
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -28,8 +30,19 @@ public class DiscoverTest {
     @Rule
     public ActivityTestRule<WelcomeActivity> mActivityTestRule = new ActivityTestRule<>(WelcomeActivity.class);
 
+    @BeforeClass
+    public static void startSuite(){
+        Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
+    }
+
+    @AfterClass
+    public static void tearDownSuite(){
+        Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
+    }
+
     @Before
     public void startUp(){
+        Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
         // Data
         String username = "UserRegistered";
         String email = String.format("registered+%s@test.com", new Date().getTime());
@@ -41,7 +54,6 @@ public class DiscoverTest {
         data.put(DBUtils.USER_EMAIL, email);
         data.put(DBUtils.USER_PASSWORD, password);
         SQLiteHandler.insertUser(InstrumentationRegistry.getTargetContext(), data);
-        Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
 
         try {
             Thread.sleep(3000);
@@ -72,4 +84,8 @@ public class DiscoverTest {
         Assert.assertNotEquals(idFoodA,idFoodB);
     }
 
+    @Before
+    public void tearDown(){
+        Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
+    }
 }

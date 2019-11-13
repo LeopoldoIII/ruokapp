@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ruokapp.R;
-import com.ruokapp.core.Session;
+import com.ruokapp.core.session.Session;
 
 public class FoodActivity extends AppCompatActivity {
 
@@ -36,7 +36,7 @@ public class FoodActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.action_settings:
-                intent = new Intent(this, SettingsActivity.class);
+                intent = new Intent(this, PreferenceActivity.class);
                 startActivity(intent);
                 break;
             case  R.id.action_about_us:

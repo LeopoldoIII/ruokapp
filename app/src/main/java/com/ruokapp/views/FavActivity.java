@@ -13,11 +13,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.ruokapp.R;
-import com.ruokapp.core.RecipeRef;
-import com.ruokapp.core.Session;
-import com.ruokapp.core.User;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
+import com.ruokapp.core.recipe.RecipeRef;
+import com.ruokapp.core.session.Session;
+import com.ruokapp.core.user.User;
 import com.ruokapp.views.adapter.Adapter;
 
 import java.util.ArrayList;
@@ -32,10 +32,14 @@ public class FavActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favs);
         String[] fields = {DBUtils.ID_FOOD_REF};
-        String[] params = {String.format("%s",User.getInstanceUser().getId())};
+        String[] params = {String.format("%s", User.getInstanceUser().getId())};
         Cursor cursor = SQLiteHandler.getRecipesFromUser(this,fields,params);
-        cursor.moveToFirst();
-        String id = cursor.getString(0);
+        String ids = "";
+        while(cursor.moveToNext()){
+            String id = cursor.getString(0);
+            ids += id+",";
+        }
+
         ListView listMatches = (ListView) findViewById(R.id.food_matches);
         foods.add(new RecipeRef(1234,"Sopa de Calabaza1", "urlToImg","20'"));
         foods.add(new RecipeRef(4321,"Chori Pan", "urlToImg","10'"));
@@ -69,7 +73,7 @@ public class FavActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.action_settings:
-                intent = new Intent(this, SettingsActivity.class);
+                intent = new Intent(this, PreferenceActivity.class);
                 startActivity(intent);
                 break;
             case  R.id.action_about_us:

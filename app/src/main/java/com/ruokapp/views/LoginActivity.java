@@ -13,8 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ruokapp.R;
-import com.ruokapp.core.Session;
-import com.ruokapp.core.User;
+import com.ruokapp.core.session.Session;
+import com.ruokapp.core.user.User;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
 import com.ruokapp.core.helper.ErrorMessage;
