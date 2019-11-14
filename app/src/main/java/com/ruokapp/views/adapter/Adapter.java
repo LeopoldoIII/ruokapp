@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.ruokapp.R;
 import com.ruokapp.core.recipe.RecipeRef;
+import com.ruokapp.core.util.ImageHandler;
+import com.ruokapp.core.util.StringParser;
 
 import java.util.ArrayList;
 
@@ -48,16 +50,9 @@ public class Adapter extends BaseAdapter {
         final View view =  inflater.inflate(R.layout.item_food, null);
         ImageView foodImage = (ImageView) view.findViewById(R.id.image_food);
         TextView titleFood = (TextView) view.findViewById(R.id.title_food);
-        ImageView iconDifficult = (ImageView) view.findViewById(R.id.icon_difficult);
-        ImageView iconTimer = (ImageView) view.findViewById(R.id.icon_timer);
-        TextView timerText = (TextView) view.findViewById(R.id.text_timer);
-
-        titleFood.setText(data.get(position).getTitle());
-        timerText.setText(data.get(position).getPreparationMinutes());
-        foodImage.setImageResource(R.drawable.referencia);
-        iconDifficult.setImageResource(R.drawable.difficult);
-        iconTimer.setImageResource(R.drawable.timer);
-
+        titleFood.setText(StringParser.getRecipeTitleToFav(data.get(position).getTitle()));
+        foodImage.setImageBitmap(ImageHandler.getImageFromUrl(data.get(position).getImage()));
         return view;
     }
+
 }

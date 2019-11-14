@@ -16,6 +16,7 @@ import com.ruokapp.R;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
 import com.ruokapp.core.recipe.RecipeRef;
+import com.ruokapp.core.service.ServiceHandle;
 import com.ruokapp.core.session.Session;
 import com.ruokapp.core.user.User;
 import com.ruokapp.views.adapter.Adapter;
@@ -31,21 +32,10 @@ public class FavActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favs);
-        String[] fields = {DBUtils.ID_FOOD_REF};
-        String[] params = {String.format("%s", User.getInstanceUser().getId())};
-        Cursor cursor = SQLiteHandler.getRecipesFromUser(this,fields,params);
-        String ids = "";
-        while(cursor.moveToNext()){
-            String id = cursor.getString(0);
-            ids += id+",";
-        }
-
+        getRecipesRefListFromUser();
         ListView listMatches = (ListView) findViewById(R.id.food_matches);
-        foods.add(new RecipeRef(1234,"Sopa de Calabaza1", "urlToImg","20'"));
-        foods.add(new RecipeRef(4321,"Chori Pan", "urlToImg","10'"));
         matchsAdapter = new Adapter(getApplicationContext(), foods);
         listMatches.setAdapter(matchsAdapter);
-
         listMatches.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -56,6 +46,23 @@ public class FavActivity extends AppCompatActivity {
 
     }
 
+    private void getRecipesRefListFromUser() {
+        String[] fields = {DBUtils.ID_FOOD_REF};
+        String[] params = {String.format("%s", User.getInstanceUser().getId())};
+        Cursor cursor = SQLiteHandler.getRecipesFromUser(this,fields,params);
+        if(User.getInstanceUser().getRecipeRefs().size() < cursor.getCount()){
+            String ids = "";
+            while(cursor.moveToNext()){
+                String id = cursor.getString(0);
+                ids += id+",";
+            }
+            foods = ServiceHandle.getInstance().getFavoritesRecipes(ids);
+            User.getInstanceUser().setRecipeRefs(foods);
+        }else {
+            foods = User.getInstanceUser().getRecipeRefs();
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main,menu);
@@ -64,7 +71,7 @@ public class FavActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Intent intent = null;
+        Intent intent ;
         switch (item.getItemId()){
             case R.id.action_logout:
                 Session.getInstance(this).closeSession();
