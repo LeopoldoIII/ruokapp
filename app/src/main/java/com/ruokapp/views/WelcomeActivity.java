@@ -10,6 +10,7 @@ import android.os.Handler;
 import com.ruokapp.R;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
+import com.ruokapp.core.service.ServiceHandle;
 import com.ruokapp.core.session.Session;
 import com.ruokapp.core.user.User;
 
@@ -30,6 +31,7 @@ public class WelcomeActivity extends AppCompatActivity {
                     if(Session.getInstance(getApplicationContext()).getUserSession() != null){
                         intent = new Intent(getApplicationContext(), HomeActivity.class);
                         setUser();
+                        setRecipesRef();
                     }
                 } catch (Exception e){
                     e.printStackTrace();
@@ -48,11 +50,23 @@ public class WelcomeActivity extends AppCompatActivity {
                 Session.getInstance(this).getUserSession()[0],
                 Session.getInstance(this).getUserSession()[1]};
         Cursor cursor = SQLiteHandler.searchUserFromLogin(this,fields,params);
-            cursor.moveToFirst();
-            User.getInstanceUser()
-                    .setUser(cursor.getInt(0)
-                            ,cursor.getString(1)
-                            ,cursor.getString(2));
+        cursor.moveToFirst();
+        User.getInstanceUser()
+                .setUser(cursor.getInt(0)
+                        ,cursor.getString(1)
+                        ,cursor.getString(2));
+    }
+
+    private void setRecipesRef() {
+        String[] idRecipesRefDB = {DBUtils.ID_FOOD_REF};
+        String[] userId = {String.format("%s", User.getInstanceUser().getId())};
+        Cursor idsRecipesRef = SQLiteHandler.getRecipesFromUser(this,idRecipesRefDB,userId);
+        String ids = "";
+        while(idsRecipesRef.moveToNext()){
+            String id = idsRecipesRef.getString(0);
+            ids += id+",";
+        }
+        User.getInstanceUser().setRecipeRefs(ServiceHandle.getInstance().getFavoritesRecipes(ids));
     }
 
     @Override
