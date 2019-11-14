@@ -20,4 +20,6 @@ public class ErrorMessage {
     public static final String REGISTER_ERROR = "Could not register. Try again";
 
     public static final String LOGIN_ERROR = "Verify your email and/or password";
+
+    public static final String MAX_REQUEST_AVAILABLE_ERROR = "You have already reached the max request limit by day";
 }

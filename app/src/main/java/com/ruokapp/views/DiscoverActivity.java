@@ -72,6 +72,10 @@ public class DiscoverActivity extends AppCompatActivity {
         } else {
             ServiceHandle.getInstance().getRecipe();
         }
+
+        if(Recipe.getInstance().getTitle() == null){
+            Toast.makeText(this, ErrorMessage.MAX_REQUEST_AVAILABLE_ERROR,Toast.LENGTH_LONG).show();
+        }
         titleRecipe.setText(Recipe.getInstance().getTitle());
         timePreparation.setText(Recipe.getInstance().getReadyInMinutes());
         imageRef.setImageBitmap(ImageHandler.getImageFromUrl(Recipe.getInstance().getImage()));

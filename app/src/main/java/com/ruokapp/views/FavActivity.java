@@ -11,10 +11,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ruokapp.R;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
+import com.ruokapp.core.helper.ErrorMessage;
 import com.ruokapp.core.recipe.RecipeRef;
 import com.ruokapp.core.service.ServiceHandle;
 import com.ruokapp.core.session.Session;
@@ -34,16 +36,19 @@ public class FavActivity extends AppCompatActivity {
         setContentView(R.layout.activity_favs);
         getRecipesRefListFromUser();
         ListView listMatches = (ListView) findViewById(R.id.food_matches);
-        matchsAdapter = new Adapter(getApplicationContext(), foods);
-        listMatches.setAdapter(matchsAdapter);
-        listMatches.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getApplicationContext(), FoodActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        if(foods == null) {
+            Toast.makeText(this, ErrorMessage.MAX_REQUEST_AVAILABLE_ERROR, Toast.LENGTH_LONG).show();
+        } else {
+            matchsAdapter = new Adapter(getApplicationContext(), foods);
+            listMatches.setAdapter(matchsAdapter);
+            listMatches.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent intent = new Intent(getApplicationContext(), FoodActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     private void getRecipesRefListFromUser() {

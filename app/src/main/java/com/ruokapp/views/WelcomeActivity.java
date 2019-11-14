@@ -6,13 +6,18 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.Toast;
 
 import com.ruokapp.R;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
+import com.ruokapp.core.helper.ErrorMessage;
+import com.ruokapp.core.recipe.RecipeRef;
 import com.ruokapp.core.service.ServiceHandle;
 import com.ruokapp.core.session.Session;
 import com.ruokapp.core.user.User;
+
+import java.util.ArrayList;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -66,7 +71,13 @@ public class WelcomeActivity extends AppCompatActivity {
             String id = idsRecipesRef.getString(0);
             ids += id+",";
         }
-        User.getInstanceUser().setRecipeRefs(ServiceHandle.getInstance().getFavoritesRecipes(ids));
+        ArrayList<RecipeRef> recipeRefs = ServiceHandle.getInstance().getFavoritesRecipes(ids);
+        if (recipeRefs == null){
+            Toast.makeText(this, ErrorMessage.MAX_REQUEST_AVAILABLE_ERROR,Toast.LENGTH_LONG).show();
+        } else {
+            User.getInstanceUser().setRecipeRefs(recipeRefs);
+        }
+
     }
 
     @Override
