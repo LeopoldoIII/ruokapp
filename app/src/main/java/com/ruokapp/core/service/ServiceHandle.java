@@ -3,6 +3,7 @@ package com.ruokapp.core.service;
 import android.os.StrictMode;
 
 import com.ruokapp.core.recipe.Recipe;
+import com.ruokapp.core.recipe.RecipeRef;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,6 +15,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class ServiceHandle {
 
@@ -91,6 +93,41 @@ public class ServiceHandle {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<RecipeRef> getFavoritesRecipes(String ids){
+        ArrayList<RecipeRef> recipeRefs = null;
+        try {
+            url = new URL(ServiceHelper.getInformationBulk(ids));
+            connection();
+            recipeRefs = obtainRecipesRef();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } finally {
+            return recipeRefs;
+        }
+    }
+
+    private ArrayList<RecipeRef> obtainRecipesRef() throws IOException, JSONException{
+        ArrayList<RecipeRef> recipeRefs = new ArrayList<>();
+
+        while ((inputLine = bufferedReader.readLine())!=null){
+            response.append(inputLine);
+        }
+        JSONArray jsonObject = new JSONArray(response.toString());
+        for (int i=0; i<jsonObject.length();i++){
+            JSONObject info = jsonObject.getJSONObject(i);
+            RecipeRef recipeRef = new RecipeRef(info.optInt("id"),
+                    info.optString("title"),
+                    info.optString("image"),
+                    info.optString("readyInMinutes"));
+            recipeRefs.add(recipeRef);
+        }
+        return recipeRefs;
     }
 
     public void closeConnection(){
