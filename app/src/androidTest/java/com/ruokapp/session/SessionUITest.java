@@ -20,8 +20,8 @@ import com.ruokapp.views.WelcomeActivity;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -50,7 +50,7 @@ public class SessionUITest {
         Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
     }
 
-    @Before
+    @After
     public void setUp(){
         Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
     }

@@ -10,6 +10,8 @@ public class ServiceHelper {
 
     private static final String GET_RANDOM_RECIPES_URL = "https://api.spoonacular.com/recipes/random?number=1";
 
+    private static final String GET_INFORMATION_BULK_URL = "https://api.spoonacular.com/recipes/informationBulk?ids=";
+
     private static final String TAGS = "&tags=";
 
 
@@ -26,6 +28,11 @@ public class ServiceHelper {
             }
         }
         return result;
+    }
+
+    public static String getInformationBulk(String ids){
+        String url = String.format("%s%s%s%s",GET_INFORMATION_BULK_URL,ids,API_KEY_PARAM,API_KEY);
+        return url;
     }
 
 

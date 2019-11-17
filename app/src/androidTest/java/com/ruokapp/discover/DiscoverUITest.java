@@ -14,6 +14,7 @@ import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
 import com.ruokapp.views.WelcomeActivity;
 
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
@@ -25,7 +26,7 @@ import java.util.Date;
 
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
-public class DiscoverTest {
+public class DiscoverUITest {
 
     @Rule
     public ActivityTestRule<WelcomeActivity> mActivityTestRule = new ActivityTestRule<>(WelcomeActivity.class);
@@ -48,6 +49,12 @@ public class DiscoverTest {
         String email = String.format("registered+%s@test.com", new Date().getTime());
         String password = "pass.1234";
 
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         // Pre-Condition
         ContentValues data = new ContentValues();
         data.put(DBUtils.USER_NAME, username);
@@ -55,11 +62,7 @@ public class DiscoverTest {
         data.put(DBUtils.USER_PASSWORD, password);
         SQLiteHandler.insertUser(InstrumentationRegistry.getTargetContext(), data);
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
 
         Espresso.onView(withId(R.id.input_email)).perform(ViewActions.typeText(email));
         Espresso.onView(withId(R.id.input_password)).perform(ViewActions.typeText(password));
@@ -84,7 +87,7 @@ public class DiscoverTest {
         Assert.assertNotEquals(idFoodA,idFoodB);
     }
 
-    @Before
+    @After
     public void tearDown(){
         Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
     }
