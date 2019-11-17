@@ -20,6 +20,7 @@ import com.ruokapp.views.WelcomeActivity;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -53,7 +54,6 @@ public class PreferencesUITest {
 
     @Before
     public void setUp(){
-        Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
         waitForWelcomeActivity();
         String username = "UserRegistered";
         String email = String.format("registered+%s@test.com", new Date().getTime());
@@ -74,6 +74,10 @@ public class PreferencesUITest {
         Espresso.onView(withId(R.id.title_diet)).check(ViewAssertions.matches(isDisplayed()));
     }
 
+    @After
+    public void tearDown(){
+        Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
+    }
 
     @Test
     public void userSetPreferences(){

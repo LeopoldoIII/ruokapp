@@ -14,6 +14,7 @@ import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
 import com.ruokapp.views.WelcomeActivity;
 
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
@@ -27,7 +28,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
-public class SignUpTest {
+public class SignUpUITest {
 
     @Rule
     public ActivityTestRule<WelcomeActivity> mActivityTestRule = new ActivityTestRule<>(WelcomeActivity.class);
@@ -44,9 +45,13 @@ public class SignUpTest {
 
     @Before
     public void startUp(){
-        Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
         waitForWelcomeActivity();
         Espresso.onView(withId(R.id.link_register)).perform(ViewActions.click());
+    }
+
+    @After
+    public void tearDown(){
+        Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
     }
 
     @Test
