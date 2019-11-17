@@ -43,7 +43,7 @@ public class FavActivity extends AppCompatActivity {
             listMatches.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    Intent intent = new Intent(getApplicationContext(), FoodActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), RecipeInfoActivity.class);
                     startActivity(intent);
                 }
             });

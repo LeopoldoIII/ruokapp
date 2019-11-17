@@ -15,7 +15,7 @@
             android:name=".views.PreferenceActivity"
             android:label="@string/title_activity_settings" />
         <activity
-            android:name=".views.FoodActivity"
+            android:name=".views.RecipeInfoActivity"
             android:label="@string/title_food"
             android:parentActivityName=".views.FavActivity" />
         <activity

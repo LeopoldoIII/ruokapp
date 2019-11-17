@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import com.ruokapp.R;
 import com.ruokapp.core.session.Session;
 
-public class FoodActivity extends AppCompatActivity {
+public class RecipeInfoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
