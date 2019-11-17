@@ -44,16 +44,11 @@ public class DiscoverUITest {
     @Before
     public void startUp(){
         Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
+        waitForWelcomeActivity();
         // Data
         String username = "UserRegistered";
         String email = String.format("registered+%s@test.com", new Date().getTime());
         String password = "pass.1234";
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         // Pre-Condition
         ContentValues data = new ContentValues();
@@ -90,5 +85,13 @@ public class DiscoverUITest {
     @After
     public void tearDown(){
         Session.getInstance(InstrumentationRegistry.getTargetContext()).closeSession();
+    }
+
+    private void waitForWelcomeActivity(){
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
