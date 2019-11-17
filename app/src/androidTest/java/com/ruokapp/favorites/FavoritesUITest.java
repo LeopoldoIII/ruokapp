@@ -41,6 +41,7 @@ public class FavoritesUITest {
 
     @Before
     public void setUp(){
+        waitForWelcomeActivity();
         // Data
         String username = "UserRegistered";
         String email = String.format("registered+%s@test.com", new Date().getTime());
@@ -82,6 +83,14 @@ public class FavoritesUITest {
         Espresso.onView(withId(R.id.icon_fav)).perform(ViewActions.click());
         Espresso.onView(withId(R.id.image_food)).check(doesNotExist());
         Espresso.onView(withId(R.id.title_food)).check(doesNotExist());
+    }
+
+    private void waitForWelcomeActivity(){
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
