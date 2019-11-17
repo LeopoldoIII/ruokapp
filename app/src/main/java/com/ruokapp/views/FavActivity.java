@@ -28,7 +28,6 @@ import java.util.ArrayList;
 public class FavActivity extends AppCompatActivity {
 
     private ArrayList<RecipeRef> foods = new ArrayList<RecipeRef>();
-    private Adapter matchsAdapter ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +38,8 @@ public class FavActivity extends AppCompatActivity {
         if(foods == null) {
             Toast.makeText(this, ErrorMessage.MAX_REQUEST_AVAILABLE_ERROR, Toast.LENGTH_LONG).show();
         } else {
-            matchsAdapter = new Adapter(getApplicationContext(), foods);
-            listMatches.setAdapter(matchsAdapter);
+            Adapter matchAdapter = new Adapter(getApplicationContext(), foods);
+            listMatches.setAdapter(matchAdapter);
             listMatches.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
