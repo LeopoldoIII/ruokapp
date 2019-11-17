@@ -71,13 +71,14 @@ public class WelcomeActivity extends AppCompatActivity {
             String id = idsRecipesRef.getString(0);
             ids += id+",";
         }
-        ArrayList<RecipeRef> recipeRefs = ServiceHandle.getInstance().getFavoritesRecipes(ids);
-        if (recipeRefs == null){
-            Toast.makeText(this, ErrorMessage.MAX_REQUEST_AVAILABLE_ERROR,Toast.LENGTH_LONG).show();
-        } else {
-            User.getInstanceUser().setRecipeRefs(recipeRefs);
+        if (!ids.equals("")){
+            ArrayList<RecipeRef> recipeRefs = ServiceHandle.getInstance().getFavoritesRecipes(ids);
+            if (recipeRefs == null){
+                Toast.makeText(this, ErrorMessage.MAX_REQUEST_AVAILABLE_ERROR,Toast.LENGTH_LONG).show();
+            } else {
+                User.getInstanceUser().setRecipeRefs(recipeRefs);
+            }
         }
-
     }
 
     @Override
