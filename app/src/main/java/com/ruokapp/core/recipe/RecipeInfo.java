@@ -7,8 +7,8 @@ public class RecipeInfo {
     private static String id;
     private static String title;
     private static String imageUrl;
-    private static String preparation;
-    private static ArrayList<StepPreparation> stepPreparations;
+    private static String preparationInMinutes;
+    private static String instructions;
     private static ArrayList<RecipeIngredient> recipeIngredients;
     private static RecipeInfo recipeInfo;
 
@@ -18,11 +18,12 @@ public class RecipeInfo {
         return recipeInfo;
     }
 
-    public void setRecipeInfo(String idRecipe, String titleRecipe, String imageRecipe, String preparation){
+    public void setRecipeInfo(String idRecipe, String titleRecipe, String imageRecipe, String preparation, String instructions){
         this.id = idRecipe;
         this.title = titleRecipe;
         this.imageUrl = imageRecipe;
-        this.preparation = preparation;
+        this.preparationInMinutes = preparation;
+        this.instructions = instructions;
     }
 
     public String getId() {
@@ -37,12 +38,12 @@ public class RecipeInfo {
         return imageUrl;
     }
 
-    public String getPreparation() {
-        return preparation;
+    public String getPreparationInMinutes() {
+        return preparationInMinutes;
     }
 
-    public ArrayList<StepPreparation> getStepPreparations() {
-        return stepPreparations;
+    public String getInstructions() {
+        return instructions;
     }
 
     public ArrayList<RecipeIngredient> getRecipeIngredients() {

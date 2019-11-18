@@ -75,7 +75,8 @@ public class RecipeInfoActivity extends AppCompatActivity {
         }
         imageRecipe.setImageBitmap(ImageHandler.getImageFromUrl(RecipeInfo.getInstance().getImageUrl()));
         titleRecipe.setText(StringParser.getRecipeTitleToFav(RecipeInfo.getInstance().getTitle()));
-        preparationTime.setText(RecipeInfo.getInstance().getPreparation());
+        preparationTime.setText(RecipeInfo.getInstance().getPreparationInMinutes());
+        steps.setText(RecipeInfo.getInstance().getInstructions());
 
     }
 }

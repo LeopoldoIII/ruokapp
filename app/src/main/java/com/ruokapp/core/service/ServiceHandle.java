@@ -144,7 +144,9 @@ public class ServiceHandle {
             RecipeInfo.getInstance().setRecipeInfo (jsonObject.optString("id"),
                     jsonObject.optString("title"),
                     jsonObject.optString("image"),
-                    jsonObject.optString("readyInMinutes"));
+                    jsonObject.optString("readyInMinutes"),
+                    jsonObject.optString("instructions"));
+
 
             closeConnection();
         } catch (MalformedURLException e) {
