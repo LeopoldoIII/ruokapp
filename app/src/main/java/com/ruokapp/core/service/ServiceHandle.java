@@ -27,7 +27,6 @@ public class ServiceHandle {
     private String inputLine;
     private StringBuffer response = new StringBuffer();
     private JSONObject jsonObject;
-    private JSONArray recipes;
 
     private static ServiceHandle serviceHandle;
 
@@ -73,7 +72,7 @@ public class ServiceHandle {
             }
             jsonObject = new JSONObject(response.toString());
 
-            recipes = jsonObject.getJSONArray("recipes");
+            JSONArray recipes = jsonObject.getJSONArray("recipes");
             for(int j=0;j<recipes.length();j++){
                 Recipe.getInstance().setId(recipes.getJSONObject(j).optInt("id"));
                 Recipe.getInstance().setTitle(recipes.getJSONObject(j).optString("title"));
@@ -141,11 +140,17 @@ public class ServiceHandle {
                 response.append(inputLine);
             }
             jsonObject = new JSONObject(response.toString());
+            JSONArray jsonIngredients = jsonObject.getJSONArray("extendedIngredients");
+            String ingredients = "";
+            for(int i=0; i<jsonIngredients.length();i++){
+                ingredients += jsonIngredients.getJSONObject(i).optString("originalString")+"\n\n";
+            }
             RecipeInfo.getInstance().setRecipeInfo (jsonObject.optString("id"),
                     jsonObject.optString("title"),
                     jsonObject.optString("image"),
                     jsonObject.optString("readyInMinutes"),
-                    jsonObject.optString("instructions"));
+                    jsonObject.optString("instructions"),
+                    ingredients);
 
 
             closeConnection();

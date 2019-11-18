@@ -9,7 +9,7 @@ public class RecipeInfo {
     private static String imageUrl;
     private static String preparationInMinutes;
     private static String instructions;
-    private static ArrayList<RecipeIngredient> recipeIngredients;
+    private static String recipeIngredients;
     private static RecipeInfo recipeInfo;
 
     public static RecipeInfo getInstance(){
@@ -18,12 +18,14 @@ public class RecipeInfo {
         return recipeInfo;
     }
 
-    public void setRecipeInfo(String idRecipe, String titleRecipe, String imageRecipe, String preparation, String instructions){
+    public void setRecipeInfo(String idRecipe, String titleRecipe, String imageRecipe,
+                              String preparation, String instructions, String ingredients){
         this.id = idRecipe;
         this.title = titleRecipe;
         this.imageUrl = imageRecipe;
         this.preparationInMinutes = preparation;
         this.instructions = instructions;
+        this.recipeIngredients = ingredients;
     }
 
     public String getId() {
@@ -46,7 +48,7 @@ public class RecipeInfo {
         return instructions;
     }
 
-    public ArrayList<RecipeIngredient> getRecipeIngredients() {
+    public String getRecipeIngredients() {
         return recipeIngredients;
     }
 }

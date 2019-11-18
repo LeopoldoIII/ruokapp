@@ -77,6 +77,6 @@ public class RecipeInfoActivity extends AppCompatActivity {
         titleRecipe.setText(StringParser.getRecipeTitleToFav(RecipeInfo.getInstance().getTitle()));
         preparationTime.setText(RecipeInfo.getInstance().getPreparationInMinutes());
         steps.setText(RecipeInfo.getInstance().getInstructions());
-
+        ingredients.setText(RecipeInfo.getInstance().getRecipeIngredients());
     }
 }
