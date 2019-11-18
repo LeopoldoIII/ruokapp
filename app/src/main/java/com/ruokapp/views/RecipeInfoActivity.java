@@ -16,6 +16,7 @@ import com.ruokapp.core.helper.ErrorMessage;
 import com.ruokapp.core.recipe.RecipeInfo;
 import com.ruokapp.core.session.Session;
 import com.ruokapp.core.util.ImageHandler;
+import com.ruokapp.core.util.StringParser;
 
 public class RecipeInfoActivity extends AppCompatActivity {
 
@@ -73,7 +74,7 @@ public class RecipeInfoActivity extends AppCompatActivity {
             Toast.makeText(this, ErrorMessage.MAX_REQUEST_AVAILABLE_ERROR, Toast.LENGTH_LONG).show();
         }
         imageRecipe.setImageBitmap(ImageHandler.getImageFromUrl(RecipeInfo.getInstance().getImageUrl()));
-        titleRecipe.setText(RecipeInfo.getInstance().getTitle());
+        titleRecipe.setText(StringParser.getRecipeTitleToFav(RecipeInfo.getInstance().getTitle()));
         preparationTime.setText(RecipeInfo.getInstance().getPreparation());
 
     }
