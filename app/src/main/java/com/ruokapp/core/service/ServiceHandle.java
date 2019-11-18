@@ -3,6 +3,7 @@ package com.ruokapp.core.service;
 import android.os.StrictMode;
 
 import com.ruokapp.core.recipe.Recipe;
+import com.ruokapp.core.recipe.RecipeInfo;
 import com.ruokapp.core.recipe.RecipeRef;
 
 import org.json.JSONArray;
@@ -101,6 +102,7 @@ public class ServiceHandle {
             url = new URL(ServiceHelper.getInformationBulk(ids));
             connection();
             recipeRefs = obtainRecipesRef();
+            closeConnection();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -128,6 +130,31 @@ public class ServiceHandle {
             recipeRefs.add(recipeRef);
         }
         return recipeRefs;
+    }
+
+    public void getRecipeInfo(String idRecipe){
+
+        try {
+            url = new URL(ServiceHelper.getInformationRecipe(idRecipe));
+            connection();
+            while ((inputLine = bufferedReader.readLine())!=null){
+                response.append(inputLine);
+            }
+            jsonObject = new JSONObject(response.toString());
+            RecipeInfo.getInstance().setRecipeInfo (jsonObject.optString("id"),
+                    jsonObject.optString("title"),
+                    jsonObject.optString("image"),
+                    jsonObject.optString("readyInMinutes"));
+
+            closeConnection();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void closeConnection(){
