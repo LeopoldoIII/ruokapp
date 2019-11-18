@@ -18,38 +18,34 @@ public class RecipeInfo {
         return recipeInfo;
     }
 
-    public static void setRecipeInfo(String idRecipe, String titleRecipe, String imageRecipe,
-                                     ArrayList<StepPreparation> steps,
-                                     ArrayList<RecipeIngredient> ingredients){
-        id = idRecipe;
-        title = titleRecipe;
-        imageUrl = imageRecipe;
-        stepPreparations = steps;
-        recipeIngredients = ingredients;
-
+    public void setRecipeInfo(String idRecipe, String titleRecipe, String imageRecipe, String preparation){
+        this.id = idRecipe;
+        this.title = titleRecipe;
+        this.imageUrl = imageRecipe;
+        this.preparation = preparation;
     }
 
-    public static String getId() {
+    public String getId() {
         return id;
     }
 
-    public static String getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    public static String getImageUrl() {
+    public String getImageUrl() {
         return imageUrl;
     }
 
-    public static String getPreparation() {
+    public String getPreparation() {
         return preparation;
     }
 
-    public static ArrayList<StepPreparation> getStepPreparations() {
+    public ArrayList<StepPreparation> getStepPreparations() {
         return stepPreparations;
     }
 
-    public static ArrayList<RecipeIngredient> getRecipeIngredients() {
+    public ArrayList<RecipeIngredient> getRecipeIngredients() {
         return recipeIngredients;
     }
 }
