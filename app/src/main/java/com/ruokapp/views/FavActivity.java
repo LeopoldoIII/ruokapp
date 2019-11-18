@@ -17,6 +17,7 @@ import com.ruokapp.R;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
 import com.ruokapp.core.helper.ErrorMessage;
+import com.ruokapp.core.recipe.RecipeInfo;
 import com.ruokapp.core.recipe.RecipeRef;
 import com.ruokapp.core.service.ServiceHandle;
 import com.ruokapp.core.session.Session;
@@ -54,10 +55,13 @@ public class FavActivity extends AppCompatActivity {
     private void getRecipeIDFromDB(int index){
         String[] fields = {DBUtils.ID_FOOD_REF};
         String[] params = {String.format("%s",User.getInstanceUser().getId()),
-                            String.format("%s",index)};
+                            String.format("%s",index+1)};
         Cursor cursor = SQLiteHandler.getIdRecipeFromUser(this,fields,params);
         cursor.moveToFirst();
         String idRecipe = cursor.getString(0);
+        if(RecipeInfo.getInstance().getId() == null ||
+                !RecipeInfo.getInstance().getId().equals(idRecipe))
+            ServiceHandle.getInstance().getRecipeInfo(idRecipe);
     }
 
     private void getRecipesRefListFromUser() {
