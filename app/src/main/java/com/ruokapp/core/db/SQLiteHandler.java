@@ -92,4 +92,16 @@ public class SQLiteHandler {
         }
     }
 
+    public static Cursor getIdRecipeFromUser(Context context, String[] fields, String[] params){
+        try {
+            return createConnection(context)
+                    .getReadableDatabase()
+                    .query(DBUtils.FOOD_REF_TABLE,fields,
+                            String.format("%s=? AND rowid=?",DBUtils.ID_USER),
+                            params,null,null,null);
+        } catch (Exception e){
+            return null;
+        }
+    }
+
 }

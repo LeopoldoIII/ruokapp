@@ -43,11 +43,21 @@ public class FavActivity extends AppCompatActivity {
             listMatches.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    getRecipeIDFromDB(i);
                     Intent intent = new Intent(getApplicationContext(), RecipeInfoActivity.class);
                     startActivity(intent);
                 }
             });
         }
+    }
+
+    private void getRecipeIDFromDB(int index){
+        String[] fields = {DBUtils.ID_FOOD_REF};
+        String[] params = {String.format("%s",User.getInstanceUser().getId()),
+                            String.format("%s",index)};
+        Cursor cursor = SQLiteHandler.getIdRecipeFromUser(this,fields,params);
+        cursor.moveToFirst();
+        String idRecipe = cursor.getString(0);
     }
 
     private void getRecipesRefListFromUser() {
