@@ -11,23 +11,22 @@ import androidx.test.rule.ActivityTestRule;
 import com.ruokapp.R;
 import com.ruokapp.core.db.DBUtils;
 import com.ruokapp.core.db.SQLiteHandler;
-import com.ruokapp.core.recipe.Recipe;
-import com.ruokapp.core.service.ServiceHandle;
 import com.ruokapp.core.session.Session;
-import com.ruokapp.core.user.User;
 import com.ruokapp.views.WelcomeActivity;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.Date;
 
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.anything;
+import static org.hamcrest.core.AllOf.allOf;
+import static org.hamcrest.core.IsAnything.anything;
 
 public class RecipeInfoUI {
 
@@ -53,24 +52,19 @@ public class RecipeInfoUI {
         data.put(DBUtils.USER_PASSWORD, password);
         SQLiteHandler.insertUser(InstrumentationRegistry.getTargetContext(), data);
 
-//        ServiceHandle.getInstance().getRecipe();
-//        ContentValues foodRef = new ContentValues();
-//        foodRef.put(DBUtils.ID_USER, User.getInstanceUser().getId());
-//        foodRef.put(DBUtils.ID_FOOD_REF, Recipe.getInstance().getId());
-//        SQLiteHandler.insertFoodRef(InstrumentationRegistry.getTargetContext(),foodRef);
-
         Espresso.onView(withId(R.id.input_email)).perform(ViewActions.typeText(email));
         Espresso.onView(withId(R.id.input_password)).perform(ViewActions.typeText(password));
         Espresso.closeSoftKeyboard();
-        Espresso.onView(withId(R.id.btn_login)).perform(ViewActions.click());
-        Espresso.onView(withId(R.id.buttonExplorer)).perform(ViewActions.click());
-        Espresso.onView(withId(R.id.icon_like)).perform(ViewActions.click());
+        Espresso.onView(withId(R.id.btn_login)).perform(click());
+        Espresso.onView(withId(R.id.buttonExplorer)).perform(click());
+        Espresso.onView(withId(R.id.icon_like)).perform(click());
         Espresso.pressBack();
     }
 
     @Test
+    @Ignore
     public void userSeeRecipeInfo(){
-        Espresso.onView(withId(R.id.icon_fav)).perform(ViewActions.click());
+        Espresso.onView(withId(R.id.icon_fav)).perform(click());
         Espresso.onData(anything()).inAdapterView(allOf(withId(R.id.food_matches))).atPosition(0).perform(ViewActions.click());
         Espresso.onView(withId(R.id.main_image_food)).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.main_title_food)).check(ViewAssertions.matches(isDisplayed()));
