@@ -13,16 +13,15 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
-public class FoodActivityTest {
+public class RecipeInfoActivityTest {
 
     @Rule
-    public ActivityTestRule<FoodActivity> mActivityTestRule = new ActivityTestRule<>(FoodActivity.class);
+    public ActivityTestRule<RecipeInfoActivity> mActivityTestRule = new ActivityTestRule<>(RecipeInfoActivity.class);
 
     @Test
     public void verifyFoodActivity(){
         Espresso.onView(withId(R.id.main_image_food)).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.main_title_food)).check(ViewAssertions.matches(isDisplayed()));
-        Espresso.onView(withId(R.id.icon_difficult)).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.icon_time)).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.time)).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.title_ingredients)).check(ViewAssertions.matches(isDisplayed()));

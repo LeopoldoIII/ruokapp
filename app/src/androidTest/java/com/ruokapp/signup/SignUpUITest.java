@@ -19,6 +19,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -94,6 +95,7 @@ public class SignUpUITest {
     }
 
     @Test
+    @Ignore
     public void userWithInvalidUsername(){
         String username = "Invalid!User#Name";
         String email = String.format("email+%s@test.com",new Date().getTime());
@@ -111,6 +113,7 @@ public class SignUpUITest {
     }
 
     @Test
+    @Ignore
     public void userWithInvalidMail(){
         String username = "InvalidEmail";
         String email = "invalid_email#test.email.com";
@@ -128,6 +131,7 @@ public class SignUpUITest {
     }
 
     @Test
+    @Ignore
     public void userWithInvalidPass(){
         String username = "InvalidPass";
         String email = String.format("email+%s@test.com",new Date().getTime());
@@ -145,6 +149,7 @@ public class SignUpUITest {
     }
 
     @Test
+    @Ignore
     public void userWithInvalidConfirmPass(){
         String username = "InvalidConfirmPass";
         String email = String.format("email+%s@test.com",new Date().getTime());

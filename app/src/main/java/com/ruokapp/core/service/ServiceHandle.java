@@ -3,6 +3,7 @@ package com.ruokapp.core.service;
 import android.os.StrictMode;
 
 import com.ruokapp.core.recipe.Recipe;
+import com.ruokapp.core.recipe.RecipeInfo;
 import com.ruokapp.core.recipe.RecipeRef;
 
 import org.json.JSONArray;
@@ -26,7 +27,6 @@ public class ServiceHandle {
     private String inputLine;
     private StringBuffer response = new StringBuffer();
     private JSONObject jsonObject;
-    private JSONArray recipes;
 
     private static ServiceHandle serviceHandle;
 
@@ -72,7 +72,7 @@ public class ServiceHandle {
             }
             jsonObject = new JSONObject(response.toString());
 
-            recipes = jsonObject.getJSONArray("recipes");
+            JSONArray recipes = jsonObject.getJSONArray("recipes");
             for(int j=0;j<recipes.length();j++){
                 Recipe.getInstance().setId(recipes.getJSONObject(j).optInt("id"));
                 Recipe.getInstance().setTitle(recipes.getJSONObject(j).optString("title"));
@@ -101,6 +101,7 @@ public class ServiceHandle {
             url = new URL(ServiceHelper.getInformationBulk(ids));
             connection();
             recipeRefs = obtainRecipesRef();
+            closeConnection();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -128,6 +129,39 @@ public class ServiceHandle {
             recipeRefs.add(recipeRef);
         }
         return recipeRefs;
+    }
+
+    public void getRecipeInfo(String idRecipe){
+
+        try {
+            url = new URL(ServiceHelper.getInformationRecipe(idRecipe));
+            connection();
+            while ((inputLine = bufferedReader.readLine())!=null){
+                response.append(inputLine);
+            }
+            jsonObject = new JSONObject(response.toString());
+            JSONArray jsonIngredients = jsonObject.getJSONArray("extendedIngredients");
+            String ingredients = "";
+            for(int i=0; i<jsonIngredients.length();i++){
+                ingredients += jsonIngredients.getJSONObject(i).optString("originalString")+"\n\n";
+            }
+            RecipeInfo.getInstance().setRecipeInfo (jsonObject.optString("id"),
+                    jsonObject.optString("title"),
+                    jsonObject.optString("image"),
+                    jsonObject.optString("readyInMinutes"),
+                    jsonObject.optString("instructions"),
+                    ingredients);
+
+
+            closeConnection();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void closeConnection(){

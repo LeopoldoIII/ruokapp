@@ -12,6 +12,10 @@ public class ServiceHelper {
 
     private static final String GET_INFORMATION_BULK_URL = "https://api.spoonacular.com/recipes/informationBulk?ids=";
 
+    private static final String GET_INFORMATION_RECIPE = "https://api.spoonacular.com/recipes/";
+
+    private static final String INFORMATION_PATH = "/information?apiKey=";
+
     private static final String TAGS = "&tags=";
 
 
@@ -35,5 +39,9 @@ public class ServiceHelper {
         return url;
     }
 
+    public static String getInformationRecipe(String idRecipe){
+        String url = String.format("%s%s%s%s",GET_INFORMATION_RECIPE,idRecipe,INFORMATION_PATH,API_KEY);
+        return url;
+    }
 
 }
