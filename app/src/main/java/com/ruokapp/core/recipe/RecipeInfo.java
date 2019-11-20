@@ -10,6 +10,7 @@ public class RecipeInfo {
     private static String preparationInMinutes;
     private static String instructions;
     private static String recipeIngredients;
+    private static String sourceUrl;
     private static RecipeInfo recipeInfo;
 
     public static RecipeInfo getInstance(){
@@ -19,13 +20,15 @@ public class RecipeInfo {
     }
 
     public void setRecipeInfo(String idRecipe, String titleRecipe, String imageRecipe,
-                              String preparation, String instructions, String ingredients){
+                              String preparation, String instructions, String ingredients,
+                              String sourceUrl){
         this.id = idRecipe;
         this.title = titleRecipe;
         this.imageUrl = imageRecipe;
         this.preparationInMinutes = preparation;
         this.instructions = instructions;
         this.recipeIngredients = ingredients;
+        this.sourceUrl = sourceUrl;
     }
 
     public String getId() {
@@ -51,4 +54,6 @@ public class RecipeInfo {
     public String getRecipeIngredients() {
         return recipeIngredients;
     }
+
+    public String getSourceUrl() {return sourceUrl; }
 }
