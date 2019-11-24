@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.ruokapp.R;
 import com.ruokapp.core.helper.ErrorMessage;
+import com.ruokapp.core.helper.ShareMessage;
 import com.ruokapp.core.recipe.RecipeInfo;
 import com.ruokapp.core.session.Session;
 import com.ruokapp.core.util.ImageHandler;
@@ -40,13 +41,13 @@ public class RecipeInfoActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main,menu);
+        getMenuInflater().inflate(R.menu.menu_recipe_info,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Intent intent = null;
+        Intent intent;
         switch (item.getItemId()){
             case R.id.action_logout:
                 Session.getInstance(this).closeSession();
@@ -62,6 +63,13 @@ public class RecipeInfoActivity extends AppCompatActivity {
                 intent = new Intent(this, AboutUsActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.action_share:
+                intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, String.format("%s\n\n%s",ShareMessage.TEXT,
+                        RecipeInfo.getInstance().getSourceUrl()));
+                intent.putExtra(Intent.EXTRA_SUBJECT, ShareMessage.SUBJECT);
+                startActivity(Intent.createChooser(intent,ShareMessage.SHARE));
             default:
                 finish();
                 break;

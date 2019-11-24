@@ -22,7 +22,6 @@ public class DiscoverActivityTest {
     public void verifyDiscoverActivity(){
         Espresso.onView(withId(R.id.image_reference)).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.food_name)).check(ViewAssertions.matches(isDisplayed()));
-        Espresso.onView(withId(R.id.icon_difficult)).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.icon_timer)).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.time)).check(ViewAssertions.matches(isDisplayed()));
         Espresso.onView(withId(R.id.icon_not_like)).check(ViewAssertions.matches(isDisplayed()));

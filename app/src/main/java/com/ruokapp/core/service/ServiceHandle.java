@@ -150,7 +150,8 @@ public class ServiceHandle {
                     jsonObject.optString("image"),
                     jsonObject.optString("readyInMinutes"),
                     jsonObject.optString("instructions"),
-                    ingredients);
+                    ingredients,
+                    jsonObject.optString("sourceUrl"));
 
 
             closeConnection();

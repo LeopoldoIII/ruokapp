@@ -49,5 +49,6 @@
     <!-- Menu -->
     <string name="title_preference">Preferences</string>
     <string name="logout">Logout</string>
+    <string name="share">Share</string>
 
 </resources>
