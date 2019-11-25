@@ -18,10 +18,16 @@ pipeline {
           bat './gradlew build'
         }
       }
+      stage("Android Test"){
+        steps{
+          bat 'adb devices -l'
+          bat './gradlew connectedAndroidTest'
+          
+        }
+      }
       stage("Generate APK"){
         steps{
           bat './gradlew assembleDebug'
-          bat './set_apk.bat'
         }
       }
       stage("Close Emulator"){
@@ -31,7 +37,7 @@ pipeline {
       }
   }
   post{
-        always{
+        success{
           junit 'app/build/outputs/androidTest-results/connected/*.xml'
         }
       }
