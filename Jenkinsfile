@@ -28,12 +28,10 @@ pipeline {
       stage("Generate APK"){
         steps{
           bat './gradlew assembleDebug'
-          apk_folder = 'apk_file'
-          bat 'mkdir ${apk_folder}'
-          bat 'copy app/build/outputs/apk/androidTest/debug/*.apk ${apk_folder}'
-          bat 'cd ${apk_folder}'
-          apk_name = '${ENV, var="BUILD_ID"}.apk'
-          bat 'rename *.apk ${apk_name}'
+          bat 'mkdir apk_file'
+          bat 'copy app/build/outputs/apk/androidTest/debug/*.apk apk_file'
+          bat 'cd apk_file'
+          bat 'rename *.apk ${ENV, var="BUILD_ID"}.apk'
         }
       }
       stage("Close Emulator"){
