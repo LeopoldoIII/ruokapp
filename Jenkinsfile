@@ -25,6 +25,11 @@ pipeline {
           
         }
       }
+      stage("Generate APK"){
+        steps{
+          bat './gradlew assembleDebug'
+        }
+      }
       stage("Close Emulator"){
         steps{
           bat 'adb -s emulator-5554 emu kill'
@@ -32,7 +37,7 @@ pipeline {
       }
   }
   post{
-        always{
+        success{
           junit 'app/build/outputs/androidTest-results/connected/*.xml'
         }
       }
