@@ -25,6 +25,19 @@ pipeline {
           
         }
       }
+      stage("Generate APK"){
+        steps{
+          bat './gradlew assembleDebug'
+        }
+        post{
+          apk_folder = 'apk_file'
+          bat 'mkdir ${apk_folder}'
+          bat 'copy app/build/outputs/apk/androidTest/debug/*.apk ${apk_folder}'
+          bat 'cd ${apk_folder}'
+          apk_name = '${ENV, var="BUILD_ID"}.apk'
+          bat 'rename *.apk ${apk_name}'
+        }
+      }
       stage("Close Emulator"){
         steps{
           bat 'adb -s emulator-5554 emu kill'
