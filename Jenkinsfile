@@ -18,18 +18,11 @@ pipeline {
           bat './gradlew build'
         }
       }
-      stage("Android Test"){
-        steps{
-          bat 'adb devices -l'
-          bat './gradlew connectedAndroidTest'
-          
-        }
-      }
       stage("Generate APK"){
         steps{
           bat './gradlew assembleDebug'
           bat 'mkdir apk_file'
-          bat 'copy app/build/outputs/apk/androidTest/debug/*.apk apk_file'
+          bat 'copy app/build/outputs/apk/androidTest/debug/*.apk apk_file/'
           bat 'cd apk_file'
           bat 'rename *.apk ${ENV, var="BUILD_ID"}.apk'
         }
