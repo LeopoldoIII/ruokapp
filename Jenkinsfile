@@ -31,12 +31,14 @@ pipeline {
         }
         post{
           success{
-            apk_folder = 'apk_file'
-            bat 'mkdir ${apk_folder}'
-            bat 'copy app/build/outputs/apk/androidTest/debug/*.apk ${apk_folder}'
-            bat 'cd ${apk_folder}'
-            apk_name = '${ENV, var="BUILD_ID"}.apk'
-            bat 'rename *.apk ${apk_name}'
+            steps{
+              apk_folder = 'apk_file'
+              bat 'mkdir ${apk_folder}'
+              bat 'copy app/build/outputs/apk/androidTest/debug/*.apk ${apk_folder}'
+              bat 'cd ${apk_folder}'
+              apk_name = '${ENV, var="BUILD_ID"}.apk'
+              bat 'rename *.apk ${apk_name}'
+            }
           }
         }
       }
