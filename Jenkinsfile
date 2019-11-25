@@ -30,12 +30,14 @@ pipeline {
           bat './gradlew assembleDebug'
         }
         post{
-          apk_folder = 'apk_file'
-          bat 'mkdir ${apk_folder}'
-          bat 'copy app/build/outputs/apk/androidTest/debug/*.apk ${apk_folder}'
-          bat 'cd ${apk_folder}'
-          apk_name = '${ENV, var="BUILD_ID"}.apk'
-          bat 'rename *.apk ${apk_name}'
+          success{
+            apk_folder = 'apk_file'
+            bat 'mkdir ${apk_folder}'
+            bat 'copy app/build/outputs/apk/androidTest/debug/*.apk ${apk_folder}'
+            bat 'cd ${apk_folder}'
+            apk_name = '${ENV, var="BUILD_ID"}.apk'
+            bat 'rename *.apk ${apk_name}'
+          }
         }
       }
       stage("Close Emulator"){
