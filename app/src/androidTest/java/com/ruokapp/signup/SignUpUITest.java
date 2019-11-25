@@ -95,7 +95,7 @@ public class SignUpUITest {
     }
 
     @Test
-    @Ignore
+    @Ignore("Test case Ignore to reduce execution")
     public void userWithInvalidUsername(){
         String username = "Invalid!User#Name";
         String email = String.format("email+%s@test.com",new Date().getTime());
@@ -113,7 +113,7 @@ public class SignUpUITest {
     }
 
     @Test
-    @Ignore
+    @Ignore("Test case Ignore to reduce execution")
     public void userWithInvalidMail(){
         String username = "InvalidEmail";
         String email = "invalid_email#test.email.com";
@@ -131,7 +131,7 @@ public class SignUpUITest {
     }
 
     @Test
-    @Ignore
+    @Ignore("Test case Ignore to reduce execution")
     public void userWithInvalidPass(){
         String username = "InvalidPass";
         String email = String.format("email+%s@test.com",new Date().getTime());
@@ -149,7 +149,7 @@ public class SignUpUITest {
     }
 
     @Test
-    @Ignore
+    @Ignore("Test case Ignore to reduce execution")
     public void userWithInvalidConfirmPass(){
         String username = "InvalidConfirmPass";
         String email = String.format("email+%s@test.com",new Date().getTime());
