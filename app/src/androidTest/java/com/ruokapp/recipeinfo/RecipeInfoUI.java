@@ -62,7 +62,7 @@ public class RecipeInfoUI {
     }
 
     @Test
-    @Ignore
+    @Ignore("Test case ignored for unstable Espresso performance to do click on an item of the list")
     public void userSeeRecipeInfo(){
         Espresso.onView(withId(R.id.icon_fav)).perform(click());
         Espresso.onData(anything()).inAdapterView(allOf(withId(R.id.food_matches))).atPosition(0).perform(ViewActions.click());

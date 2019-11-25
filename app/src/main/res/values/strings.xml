@@ -44,7 +44,13 @@
 
     <!-- About Us -->
     <string name="title_about_us">About Us</string>
-    <string name="about_us">Ruokapp</string>
+    <string name="about_us">Ruokapp is a project from Carballal Mariana and David Gonzalez to finish the Android course in the ORT Institute.
+        \n\nThis app is about discover recipes that you could add into a favorite list and then see information about this recipes like Ingredients and Preparation.
+        \n\nThis app use a API from Spoonacular, this service has a free used that just allow 150 request by day. From Ruokapp we work to optimize the requests to this service, but is possible that your experiences could be affected by this limitation.
+        \n\nWe are working to offer a better and customize experience offering more details information and a better integration with Spooncular.
+        \n\nRuokapp is a open-source project and you could find the source code on:
+    </string>
+    <string name="git_hub">Github - Ruokapp</string>
 
     <!-- Menu -->
     <string name="title_preference">Preferences</string>

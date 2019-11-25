@@ -22,6 +22,7 @@ import com.ruokapp.core.db.SQLiteHandler;
 import com.ruokapp.core.helper.ErrorMessage;
 import com.ruokapp.core.service.ServiceHandle;
 import com.ruokapp.core.util.ImageHandler;
+import com.ruokapp.core.util.StringParser;
 
 public class DiscoverActivity extends AppCompatActivity {
 
@@ -76,7 +77,7 @@ public class DiscoverActivity extends AppCompatActivity {
         if(Recipe.getInstance().getTitle() == null){
             Toast.makeText(this, ErrorMessage.MAX_REQUEST_AVAILABLE_ERROR,Toast.LENGTH_LONG).show();
         }
-        titleRecipe.setText(Recipe.getInstance().getTitle());
+        titleRecipe.setText(StringParser.getRecipeTitleToDiscover(Recipe.getInstance().getTitle()));
         timePreparation.setText(Recipe.getInstance().getReadyInMinutes());
         imageRef.setImageBitmap(ImageHandler.getImageFromUrl(Recipe.getInstance().getImage()));
         ServiceHandle.getInstance().closeConnection();
