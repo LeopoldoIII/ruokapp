@@ -39,6 +39,7 @@ pipeline {
   post{
         success{
           junit 'app/build/outputs/androidTest-results/connected/*.xml'
+          emailext body: 'This is a Notification for the Ruokapp pipeline', subject: 'Build pipeline Notification', to: 'davidsghz@gmail.com', from: 'davidsghz@gmail.com'
         }
       }
 }
