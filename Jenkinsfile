@@ -20,7 +20,7 @@ pipeline {
       }
       stage("Android Test"){
         steps{
-          bat 'adb devices -l'
+          bat 'adb devices -l'  
           bat './gradlew connectedAndroidTest'
           
         }
@@ -39,7 +39,8 @@ pipeline {
   post{
         success{
           junit 'app/build/outputs/androidTest-results/connected/*.xml'
-          emailext body: 'This is a Notification for the Ruokapp pipeline', subject: 'Build pipeline Notification', to: 'davidsghz@gmail.com', from: 'davidsghz@gmail.com'
+          archiveArtifacts allowEmptyArchive: true, artifacts: './app/build/outputs/apk/debug/*', onlyIfSuccessful: true
+          emailext body: 'This is a Notification for the Ruokapp pipeline for Build: $BUILD_ID \n Check the Job: $JOB_NAME', subject: 'Build pipeline Notification from $JOB_NAME', to: 'davidsghz@gmail.com', from: 'davidsghz@gmail.com'
         }
       }
 }
