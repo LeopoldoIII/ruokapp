@@ -39,7 +39,7 @@ pipeline {
   post{
         success{
           //junit 'app/build/outputs/androidTest-results/connected/*.xml'
-          archiveArtifacts allowEmptyArchive: true, artifacts: './app/build/outputs/apk/debug/*', onlyIfSuccessful: true
+          archiveArtifacts allowEmptyArchive: true, artifacts: 'app/build/outputs/apk/debug/*', onlyIfSuccessful: true
           emailext body: 'This is a Notification for the Ruokapp pipeline for Build: $BUILD_ID \n Check the Job: $JOB_NAME', subject: 'Build pipeline Notification from $JOB_NAME', to: 'davidsghz@gmail.com', from: 'davidsghz@gmail.com'
         }
       }
